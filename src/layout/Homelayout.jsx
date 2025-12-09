@@ -4,7 +4,8 @@ import Navbar from '../component/Navbar';
 
 const Homelayout = () => {
     return (
-        <div >
+        <div className='merriweather bg-[#0A102F]
+'>
             <Navbar></Navbar>
             <Outlet></Outlet>
             
