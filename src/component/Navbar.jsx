@@ -5,7 +5,7 @@ import { NavLink } from 'react-router';
 const Navbar = () => {
     const links=<>
         <NavLink className="text-[16px] mr-5">Home</NavLink>
-        <NavLink className="text-[16px] mr-5"> All Contests</NavLink>
+        <NavLink to="/allcontest" className="text-[16px] mr-5"> All Contests</NavLink>
         <NavLink className="text-[16px] mr-5"> LogIn</NavLink>
         <NavLink className="text-[16px]"> Register</NavLink>
     </>
@@ -24,7 +24,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className='flex items-center '>
-                        <img className='w-[40px] h-[40px] ' src={img1} alt="" />
+                        <img className='w-[60px] h-[60px] rounded-full ' src={img1} alt="" />
                         <a className="btn btn-ghost text-2xl p-2 font-extrabold">ContestHub</a>
                     </div>
                 </div>

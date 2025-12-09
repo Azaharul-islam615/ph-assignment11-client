@@ -5,12 +5,21 @@ import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import Homelayout from './layout/Homelayout.jsx'
 import Home from './pages/Home.jsx'
+import Errorpage from './component/Errorpage.jsx'
+import AllContests from './pages/AllContest.jsx'
 const router=createBrowserRouter([
     {path:'/',
       Component:Homelayout,
       children:[
         {index:true,
           Component:Home
+        },
+        
+        {path:'/allcontest',
+          element:<AllContests></AllContests>
+        }, {
+          path: '*',
+          Component: Errorpage
         }
       ]
     }
