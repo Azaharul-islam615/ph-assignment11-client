@@ -4,13 +4,12 @@ import { NavLink } from 'react-router';
 
 const Navbar = () => {
     const links=<>
-        <NavLink className="text-[16px] mr-5">Home</NavLink>
+        <NavLink to="/" className="text-[16px] mr-5">Home</NavLink>
         <NavLink to="/allcontest" className="text-[16px] mr-5"> All Contests</NavLink>
-        <NavLink className="text-[16px] mr-5"> LogIn</NavLink>
-        <NavLink className="text-[16px]"> Register</NavLink>
+        
     </>
     return (
-        <div className='bg-[#050E3C]'>
+        <div className='bg-[#050E3C] '>
             <div className="  navbar text-white shadow-sm  ">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -24,7 +23,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className='flex items-center '>
-                        <img className='w-[60px] h-[60px] rounded-full ' src={img1} alt="" />
+                        <img className='w-[70px] h-[70px] rounded-full ' src={img1} alt="" />
                         <a className="btn btn-ghost text-2xl p-2 font-extrabold">ContestHub</a>
                     </div>
                 </div>
@@ -34,7 +33,8 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn bg-[#050E3C] text-white hover:bg-[#2563EB] font-semibold text-[16px]">Button</a>
+                    <a className="btn mr-2 bg-[#050E3C] text-white hover:bg-[#2563EB] font-semibold text-[16px]">LogIn</a>
+                    <a className="btn bg-[#050E3C] text-white hover:bg-[#2563EB] font-semibold text-[16px]">Register</a>
                 </div>
             </div>
        </div>
