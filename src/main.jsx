@@ -7,6 +7,7 @@ import Homelayout from './layout/Homelayout.jsx'
 import Home from './pages/Home.jsx'
 import Errorpage from './component/Errorpage.jsx'
 import AllContests from './pages/AllContest.jsx'
+import About from './pages/About.jsx'
 const router=createBrowserRouter([
     {path:'/',
       Component:Homelayout,
@@ -17,7 +18,11 @@ const router=createBrowserRouter([
         
         {path:'/allcontest',
           element:<AllContests></AllContests>
-        }, {
+        }, 
+        {path:'/about',
+          Component:About
+        },
+        {
           path: '*',
           Component: Errorpage
         }
