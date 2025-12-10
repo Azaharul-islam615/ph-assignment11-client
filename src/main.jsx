@@ -8,6 +8,9 @@ import Home from './pages/Home.jsx'
 import Errorpage from './component/Errorpage.jsx'
 import AllContests from './pages/AllContest.jsx'
 import About from './pages/About.jsx'
+import Contact from './pages/Contact.jsx'
+import ContestDetails from './component/ContestDetails.jsx'
+
 const router=createBrowserRouter([
     {path:'/',
       Component:Homelayout,
@@ -21,6 +24,12 @@ const router=createBrowserRouter([
         }, 
         {path:'/about',
           Component:About
+        },
+        {path:'/contact',
+          Component:Contact
+        },
+        {path:'/contestdetails',
+          Component:ContestDetails
         },
         {
           path: '*',

@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { use } from 'react';
 import img1 from"../assets/ChatGPT Image ৯ ডিসে, ২০২৫, ০১_৩৯_৫২ PM.png"
 import { NavLink } from 'react-router';
+import { AuthContext } from '../Context/Contextprovider';
 
 const Navbar = () => {
+   
     const links=<>
         <NavLink to="/" className="text-[16px] mr-5">Home</NavLink>
         <NavLink to="/allcontest" className="text-[16px] mr-5"> All Contests</NavLink>
         <NavLink to="/about" className="text-[16px] mr-5"> About Us</NavLink>
+        <NavLink to="/contact" className="text-[16px] mr-5"> Contact</NavLink>
         
     </>
     return (
