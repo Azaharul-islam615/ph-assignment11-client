@@ -1,16 +1,27 @@
 import React, { use } from 'react';
-import img1 from"../assets/ChatGPT Image ৯ ডিসে, ২০২৫, ০১_৩৯_৫২ PM.png"
-import { NavLink } from 'react-router';
-import { AuthContext } from '../Context/Contextprovider';
+import img1 from "../assets/ChatGPT Image ৯ ডিসে, ২০২৫, ০১_৩৯_৫২ PM.png"
+import { Link, NavLink } from 'react-router';
+import { AuthContext } from '../Context/Authprovider';
 
 const Navbar = () => {
+    const { user, logout } = use(AuthContext)
+
+    const handlelogout = () => {
+        logout()
+            .then(() => {
+
+            })
+            .catch(err => {
+                console.log(err.message)
+            })
+    }
    
-    const links=<>
+    const links = <>
         <NavLink to="/" className="text-[16px] mr-5">Home</NavLink>
         <NavLink to="/allcontest" className="text-[16px] mr-5"> All Contests</NavLink>
         <NavLink to="/about" className="text-[16px] mr-5"> About Us</NavLink>
         <NavLink to="/contact" className="text-[16px] mr-5"> Contact</NavLink>
-        
+
     </>
     return (
         <div className='bg-[#050E3C] '>
@@ -23,7 +34,7 @@ const Navbar = () => {
                         <ul
                             tabIndex="-1"
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                           {links}
+                            {links}
                         </ul>
                     </div>
                     <div className='flex items-center '>
@@ -37,11 +48,33 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn mr-2 bg-[#050E3C] text-white hover:bg-[#2563EB] font-semibold text-[16px]">LogIn</a>
-                    <a className="btn bg-[#050E3C] text-white hover:bg-[#2563EB] font-semibold text-[16px]">Register</a>
+                    {user ? <><button onClick={logout}  className="btn mr-2 bg-[#050E3C] text-white hover:bg-[#2563EB] font-semibold text-[16px]">Logout</button>
+                       
+                    </> :<> <Link to="/login" className="btn mr-2 bg-[#050E3C] text-white hover:bg-[#2563EB] font-semibold text-[16px]">LogIn</Link>
+                        <Link to='/register' className="btn bg-[#050E3C] text-white hover:bg-[#2563EB] font-semibold text-[16px]">Register</Link></>
+                    }
+                    
+                   
                 </div>
+                {user && (
+                    <div className="relative group ml-1">
+                        {/* Profile Image */}
+                        <div className="rounded-full overflow-hidden w-12 h-12 cursor-pointer">
+                            <img
+                                className="w-full h-full object-cover"
+                                src={user.photoURL}
+                                alt=""
+                            />
+                        </div>
+
+                        {/* Hover Dropdown */}
+                        <div className="absolute right-0 mt-2 bg-[#050E3C] text-white text-sm px-3 py-2 rounded-lg shadow-lg hidden group-hover:block z-50">
+                            <p>{user.displayName}</p>
+                        </div>
+                    </div>
+                )}
             </div>
-       </div>
+        </div>
     );
 };
 

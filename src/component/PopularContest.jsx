@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 const PopularContests = () => {
     const contests = [
@@ -89,9 +90,9 @@ const PopularContests = () => {
                 ))}
             </div>
             <div className="text-center mt-8 ">
-                <button className="btn btn-outline text-[16px] rounded-xl text-white hover:bg-blue-600 hover:text-white">
+                <Link to="/allcontest" className="btn btn-outline text-[16px] rounded-xl text-white hover:bg-blue-600 hover:text-white">
                     Show All
-                </button>
+                </Link>
             </div>
         </div>
     );

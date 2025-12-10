@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 const ExtraSection = () => {
     return (
@@ -41,12 +42,12 @@ const ExtraSection = () => {
 
                 {/* CTA Button */}
                 <div className="mt-12">
-                    <a
-                        href="/all-contests"
+                    <Link
+                        to="/allcontest"
                         className="px-8 py-3 bg-indigo-600 text-white text-lg font-semibold rounded-xl hover:bg-indigo-700 transition"
                     >
                         Explore All Contests
-                    </a>
+                    </Link>
                 </div>
 
             </div>

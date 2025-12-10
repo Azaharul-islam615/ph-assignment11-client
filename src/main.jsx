@@ -8,38 +8,64 @@ import Home from './pages/Home.jsx'
 import Errorpage from './component/Errorpage.jsx'
 import AllContests from './pages/AllContest.jsx'
 import About from './pages/About.jsx'
-import Contact from './pages/Contact.jsx'
-import ContestDetails from './component/ContestDetails.jsx'
 
-const router=createBrowserRouter([
-    {path:'/',
-      Component:Homelayout,
-      children:[
-        {index:true,
-          Component:Home
-        },
-        
-        {path:'/allcontest',
-          element:<AllContests></AllContests>
-        }, 
-        {path:'/about',
-          Component:About
-        },
-        {path:'/contact',
-          Component:Contact
-        },
-        {path:'/contestdetails',
-          Component:ContestDetails
-        },
-        {
-          path: '*',
-          Component: Errorpage
-        }
-      ]
-    }
+import ContestDetails from './component/ContestDetails.jsx'
+import Login from './component/Login.jsx'
+
+import Register from './component/Register.jsx'
+import Authprovider from './Context/Authprovider.jsx'
+
+import Contact from './pages/Contact.jsx'
+import Privetroutes from './component/Privetroutes.jsx'
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    Component: Homelayout,
+    children: [
+      {
+        index: true,
+        Component: Home
+      },
+
+      {
+        path: '/allcontest',
+        element: <AllContests></AllContests>
+      },
+      {
+        path: '/about',
+        Component: About
+      },
+      {
+        path: '/contact',
+        element:<Privetroutes><Contact></Contact></Privetroutes>
+       
+      },
+      {
+        path: '/contestdetails',
+        Component: ContestDetails
+      },
+      {
+        path: '/login',
+        Component: Login
+      },
+      {
+        path: '/register',
+        Component: Register
+      },
+      {
+        path: '*',
+        Component: Errorpage
+      }
+    ]
+  }
 ])
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <RouterProvider router={router}></RouterProvider>
-  </StrictMode>,
+  <Authprovider>
+    <StrictMode>
+      <RouterProvider router={router}></RouterProvider>
+    </StrictMode>,
+  </Authprovider>
+
+
 )

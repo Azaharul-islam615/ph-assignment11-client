@@ -5,10 +5,12 @@ import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStat
 import app from '../firebase.init';
 export const AuthContext = createContext()
 const googleprovider = new GoogleAuthProvider()
-const auth = getAuth(app)
+export const auth = getAuth(app)
 const Authprovider = ({ children }) => {
+
     const [loading, setloading] = useState(true)
     const [user, setUser] = useState(null)
+    console.log(user)
 
     const createUser = (email, password) => {
         setloading(true)
@@ -28,6 +30,7 @@ const Authprovider = ({ children }) => {
         return signInWithPopup(auth, googleprovider)
     }
     const updateuserprofile = (updatedata) => {
+      
         return updateProfile(auth.currentUser, updatedata)
     }
     useEffect(() => {
