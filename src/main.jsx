@@ -19,6 +19,9 @@ import Contact from './pages/Contact.jsx'
 import Privetroutes from './component/Privetroutes.jsx'
 import DashboardLayout from './layout/DashboardLayout.jsx'
 import Mycontests from './pages/Dashboard/mycontests/Mycontests.jsx'
+import MyCreatedContests from './pages/Dashboard/MyCreatedContests/MyCreatedContests.jsx'
+import SubmittedTasks from './pages/Dashboard/Submitted Tasks/SubmittedTasks.jsx'
+import EditContest from './pages/Dashboard/Edit contest/Editcontest.jsx'
 
 const router = createBrowserRouter([
   {
@@ -68,6 +71,15 @@ const router = createBrowserRouter([
         path:'createContest',
         Component:Mycontests
 
+      },
+      {path:'mycreatedcontest',
+        Component:MyCreatedContests
+      },
+      {path:'submittedTask',
+        Component:SubmittedTasks
+      },
+      {path:'editcontest',
+        Component:EditContest
       }
     ]
   }

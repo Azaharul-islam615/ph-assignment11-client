@@ -4,13 +4,17 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
 import axios from "axios";
+import UseaxiosSecure from "../../../hooks/UseaxiosSecure";
+
 
 const Mycontests = () => {
-    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const { register, handleSubmit, 
+        formState: { errors },
+         reset } = useForm();
     const [deadline, setDeadline] = useState(new Date());
    
-
-    const onSubmit = (data) => {
+const axiosSecure=UseaxiosSecure()
+    const onSubmit =async (data) => {
         const profileImage = data.photo[0]
        
         const formData = new FormData()
@@ -18,14 +22,39 @@ const Mycontests = () => {
         const ImageUrl = `https://api.imgbb.com/1/upload?expiration=600&key=${import.meta.env.VITE_image_host}`
   
         
-        axios.post(ImageUrl, formData)
+        const imgRes =await axios.post(ImageUrl, formData)
+       
+
+        const image = imgRes.data.data.url;
+
+        const contestData = {
+            name: data.name,
+            description: data.description,
+            price: data.price,
+            prize: data.prize,
+            taskInstruction: data.taskInstruction,
+            type: data.type,
+            deadline: deadline,
+            image: image,
+            status: "pending",
+            createdAt: new Date()
+        };
+        axiosSecure.post('/contest',contestData)
         .then(res=>{
             console.log(res)
+            if(res.data.insertedId){
+                Swal.fire({
+                    icon: "success",
+                    title: "Contest Added!",
+                    text: "Your contest has been submitted successfully and is pending approval.",
+                    showConfirmButton: false,
+                    timer: 1800,
+                });
+
+            }
         })
-        .catch(err=>{
-            console.log(err)
-        })
-        reset();
+
+       reset()
      
     };
 

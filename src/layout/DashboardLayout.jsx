@@ -1,5 +1,7 @@
 import React from 'react';
 import { BsStack } from 'react-icons/bs';
+import { FaClipboardList, FaRegEdit } from 'react-icons/fa';
+import { FiUpload } from 'react-icons/fi';
 import { IoBagAdd } from 'react-icons/io5';
 import { Link, NavLink, Outlet } from 'react-router';
 
@@ -41,6 +43,33 @@ const DashboardLayout = () => {
                                 {/* Home icon */}
                                 <IoBagAdd  size={16}></IoBagAdd>
                                 <span className="is-drawer-close:hidden">Create-Contest</span>
+                            </Link>
+                            
+                            
+                        </li>
+                        <li>
+                            <Link to="/dashboard/mycreatedcontest" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Created Contests">
+                               
+                                <FaClipboardList size={16} ></FaClipboardList>
+                                <span className="is-drawer-close:hidden">MyCreatedContests</span>
+                            </Link>
+                            
+                            
+                        </li>
+                        <li>
+                            <Link to="/dashboard/submittedTask" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Submitted Tasks">
+                               
+                                <FiUpload size={16} />
+                                <span className="is-drawer-close:hidden">Submitted Tasks</span>
+                            </Link>
+                            
+                            
+                        </li>
+                        <li>
+                            <Link to="/dashboard/editcontest" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Edit Contest">
+                               
+                                <FaRegEdit size={16} />
+                                <span className="is-drawer-close:hidden">EditContest</span>
                             </Link>
                             
                             
