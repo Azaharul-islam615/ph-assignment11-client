@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { use } from 'react';
 import { AuthContext } from '../Context/Authprovider';
+import Swal from 'sweetalert2';
 
 const Login = () => {
     const { googleauth, login } = use(AuthContext)
@@ -17,7 +18,14 @@ const Login = () => {
     const handlelogin = (data, e) => {
         login(data.email, data.password)
             .then(result => {
-                console.log(result.user)
+               
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Login successfull.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 navigate(location.state ? location.state : "/")
                 e.target.reset()
             })
@@ -29,6 +37,13 @@ const Login = () => {
         googleauth()
             .then(result => {
                 console.log(result.user)
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Login successfull.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 navigate(location.state ? location.state : "/")
             })
             .catch(err => {

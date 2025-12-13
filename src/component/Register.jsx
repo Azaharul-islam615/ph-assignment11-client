@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { MdOutlineFormatIndentIncrease } from "react-icons/md";
 import axios from "axios";
 import { auth, AuthContext } from "../Context/Authprovider";
+import Swal from "sweetalert2";
 
 
 const Register = () => {
@@ -18,7 +19,7 @@ const Register = () => {
         handleSubmit, formState: { errors } } = useForm()
 
     const handleRegistration = (data, e) => {
-    
+
         const profileImage = data.photo[0]
         createUser(data.email, data.password)
             .then(result => {
@@ -41,8 +42,16 @@ const Register = () => {
                                     displayName: userProfile.displayName,
                                     photoURL: userProfile.photoURL
                                 });
+                                Swal.fire({
+                                    position: "top-end",
+                                    icon: "success",
+                                    title: "Your account has been created successfully.",
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+
                                 navigate(location.state ? location.state : '/');
-                                
+
                             })
                             .catch(err => {
                                 console.log(err.message)
@@ -59,8 +68,15 @@ const Register = () => {
     const handlegoogle = () => {
         googleauth()
             .then(result => {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Login successfull",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 navigate(location.state ? location.state : '/');
-                console.log(result.user)
+
 
             })
             .catch(err => {

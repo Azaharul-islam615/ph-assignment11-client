@@ -21,8 +21,12 @@ const Navbar = () => {
         <NavLink to="/allcontest" className="text-[16px] mr-5"> All Contests</NavLink>
         <NavLink to="/about" className="text-[16px] mr-5"> About Us</NavLink>
         <NavLink to="/contact" className="text-[16px] mr-5"> Contact</NavLink>
+        {user && <>
+            <NavLink to="/dashboard" className="text-[16px] mr-5"> Dashboard</NavLink>
+        </>}
 
     </>
+   
     return (
         <div className='bg-[#050E3C] '>
             <div className="  navbar text-white shadow-sm  ">
@@ -44,7 +48,7 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                        {links}
+                       {links}
                     </ul>
                 </div>
                 <div className="navbar-end">

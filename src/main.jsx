@@ -17,6 +17,8 @@ import Authprovider from './Context/Authprovider.jsx'
 
 import Contact from './pages/Contact.jsx'
 import Privetroutes from './component/Privetroutes.jsx'
+import DashboardLayout from './layout/DashboardLayout.jsx'
+import Mycontests from './pages/Dashboard/mycontests/Mycontests.jsx'
 
 const router = createBrowserRouter([
   {
@@ -56,6 +58,16 @@ const router = createBrowserRouter([
       {
         path: '*',
         Component: Errorpage
+      }
+    ]
+  },
+  {path:'/dashboard',
+    element:<Privetroutes><DashboardLayout></DashboardLayout></Privetroutes>,
+    children:[
+      {
+        path:'createContest',
+        Component:Mycontests
+
       }
     ]
   }
