@@ -23,6 +23,7 @@ import MyCreatedContests from './pages/Dashboard/MyCreatedContests/MyCreatedCont
 import SubmittedTasks from './pages/Dashboard/Submitted Tasks/SubmittedTasks.jsx'
 import EditContest from './pages/Dashboard/Edit contest/Editcontest.jsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import ManageContests from './pages/Dashboard/Manage Contests/ManageContests.jsx'
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -49,7 +50,7 @@ const router = createBrowserRouter([
        
       },
       {
-        path: '/contestdetails',
+        path: '/contestdetails/:id',
         Component: ContestDetails
       },
       {
@@ -82,6 +83,9 @@ const router = createBrowserRouter([
       },
       {path:'editcontest/:id',
         Component:EditContest
+      },
+      {path:'manageContest',
+        Component:ManageContests
       }
     ]
   }

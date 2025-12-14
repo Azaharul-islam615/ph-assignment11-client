@@ -1,7 +1,23 @@
+import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
+import { useParams } from "react-router";
+import UseaxiosSecure from "../hooks/UseaxiosSecure";
 
 const ContestDetails = () => {
     const [openModal, setOpenModal] = useState(false);
+    const {id}=useParams()
+    const axiosSecure=UseaxiosSecure()
+   
+    const { data: contest } = useQuery({
+        queryKey: ["contest", id],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/contest/${id}`);
+            return res.data;
+        },
+       
+            
+    });
+    console.log(contest)
 
     return (
         <div className="bg-[#050E3C] text-white min-h-screen py-12">
@@ -9,14 +25,14 @@ const ContestDetails = () => {
 
                 {/* Contest Title */}
                 <h1 className="text-4xl font-extrabold mb-4">
-                    Logo Design Championship 2025
+                   {contest.name}
                 </h1>
 
                 {/* Banner Image */}
                 <img
-                    src="https://images.unsplash.com/photo-1587614382346-4ec70e388b28?auto=format&fit=crop&w=1200&q=80"
+                    src={contest.image}
                     className="w-full h-72 object-cover rounded-xl shadow-lg"
-                    alt="Contest Banner"
+                    alt={contest.name}
                 />
 
                 {/* Stats */}
@@ -28,13 +44,13 @@ const ContestDetails = () => {
 
                     <div>
                         <p className="text-gray-300">Prize Money</p>
-                        <h2 className="text-3xl font-bold text-indigo-400">$500</h2>
+                        <h2 className="text-3xl font-bold text-indigo-400">{contest.prize}</h2>
                     </div>
 
                     <div>
                         <p className="text-gray-300">Deadline</p>
-                        <h2 className="text-3xl font-bold text-red-400">
-                            02 Days 14 Hours
+                        <h2 className="text-2xl font-bold text-red-400">
+                            {contest.deadline}
                         </h2>
                     </div>
                 </div>
@@ -56,17 +72,12 @@ const ContestDetails = () => {
                 <div className="mt-10 bg-[#0C1A4A] p-6 rounded-xl">
                     <h2 className="text-2xl font-bold mb-3">📝 Contest Description</h2>
                     <p className="text-gray-300 leading-7">
-                        This contest focuses on creating a minimalistic, modern logo that
-                        reflects creativity and innovation. Participants must submit their
-                        original work. Any plagiarism will result in disqualification.
-                        Make sure your logo aligns with the theme provided by the admin.
+                        {contest.description}
                     </p>
 
                     <h2 className="text-2xl font-bold mt-6 mb-3">📌 Task Details</h2>
                     <p className="text-gray-300 leading-7">
-                        You need to create a clean vector logo in PNG/SVG format. Upload
-                        the design link (Drive/Dropbox/Figma). Judges will evaluate based
-                        on creativity, uniqueness, and theme match.
+                        {contest.taskInstruction}
                     </p>
                 </div>
 

@@ -6,7 +6,10 @@ import Footer from '../component/Footer';
 import ExtraSection from '../component/ExtraSection';
 import ExtraSectionTwo from '../component/ExtraSectionTwo';
 
+
+
 const Home = () => {
+   
     return (
         <div >
             <Banner></Banner>

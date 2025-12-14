@@ -9,7 +9,7 @@ const MyCreatedContests = () => {
    const {user}=use(AuthContext)
     const axiosSecure=UseaxiosSecure()
     const {data:contests=[],refetch}=useQuery({
-        queryKey: ['contest', user?.email],
+        queryKey: ['contest', 'pending'],
         queryFn:async()=>{
             const res = await axiosSecure.get(`/contest?email=${user.email}`)
             return res.data
@@ -75,9 +75,9 @@ const MyCreatedContests = () => {
                                     </span>
                                 </td>
                                 <td className="px-4 py-3 text-center space-x-2">
-                                    <button className="bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded-md text-white text-sm">
+                                    <Link to="/dashboard/submittedTask" className="bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded-md text-white text-sm">
                                         See Submissions
-                                    </button>
+                                    </Link>
                                     {contest.status === "pending" && (
                                         <>
                                             <Link to={`/dashboard/editcontest/${contest._id}`} className="bg-green-500 hover:bg-green-600 px-3 py-1 rounded-md text-white text-sm">
