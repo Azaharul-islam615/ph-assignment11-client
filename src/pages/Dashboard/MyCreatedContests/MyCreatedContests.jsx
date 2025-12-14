@@ -1,36 +1,46 @@
-import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import React, { use } from "react";
+import UseaxiosSecure from "../../../hooks/UseaxiosSecure";
+import { Link } from "react-router";
+import { AuthContext } from "../../../Context/Authprovider";
+import Swal from "sweetalert2";
 
 const MyCreatedContests = () => {
-    const contests = [
-        {
-            _id: 1,
-            name: "Logo Design Contest",
-            type: "Design",
-            price: 10,
-            prize: 100,
-            status: "pending",
-        },
-        {
-            _id: 2,
-            name: "Writing Challenge",
-            type: "Writing",
-            price: 5,
-            prize: 50,
-            status: "approved",
-        },
-        {
-            _id: 3,
-            name: "Coding Marathon",
-            type: "Coding",
-            price: 15,
-            prize: 200,
-            status: "rejected",
-        },
-    ];
+   const {user}=use(AuthContext)
+    const axiosSecure=UseaxiosSecure()
+    const {data:contests=[],refetch}=useQuery({
+        queryKey: ['contest', user?.email],
+        queryFn:async()=>{
+            const res = await axiosSecure.get(`/contest?email=${user.email}`)
+            return res.data
+        }
+    })
+    const handleDelete = async (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "This contest will be deleted permanently!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const res = await axiosSecure.delete(`/contest/${id}`);
+                Swal.fire("Deleted!", "Contest has been deleted.", "success");
+                refetch(); 
+
+                
+            }
+        });
+    };
+
+    
+   
 
     return (
         <div className="max-w-6xl mx-auto my-10 p-6 bg-[#0C1A4A] text-white rounded-2xl shadow-2xl">
             <h2 className="text-3xl font-bold mb-6 text-green-400">My Created Contests</h2>
+            
 
             <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-700">
@@ -70,10 +80,10 @@ const MyCreatedContests = () => {
                                     </button>
                                     {contest.status === "pending" && (
                                         <>
-                                            <button className="bg-green-500 hover:bg-green-600 px-3 py-1 rounded-md text-white text-sm">
+                                            <Link to={`/dashboard/editcontest/${contest._id}`} className="bg-green-500 hover:bg-green-600 px-3 py-1 rounded-md text-white text-sm">
                                                 Edit
-                                            </button>
-                                            <button className="bg-red-500 hover:bg-red-600 px-3 py-1 rounded-md text-white text-sm">
+                                            </Link>
+                                            <button onClick={() => handleDelete(contest._id)} className="bg-red-500 hover:bg-red-600 px-3 py-1 rounded-md text-white text-sm">
                                                 Delete
                                             </button>
                                         </>

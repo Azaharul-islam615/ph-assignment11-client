@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
 import axios from "axios";
 import UseaxiosSecure from "../../../hooks/UseaxiosSecure";
+import { AuthContext } from "../../../Context/Authprovider";
 
 
 const Mycontests = () => {
+    const {user}=use(AuthContext)
     const { register, handleSubmit, 
         formState: { errors },
          reset } = useForm();
@@ -28,6 +30,7 @@ const axiosSecure=UseaxiosSecure()
         const image = imgRes.data.data.url;
 
         const contestData = {
+            email: data.email,
             name: data.name,
             description: data.description,
             price: data.price,
@@ -65,6 +68,17 @@ const axiosSecure=UseaxiosSecure()
             <h2 className="text-3xl font-extrabold mb-6 text-green-400">Add New Contest</h2>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                <div>
+                    <label className="block mb-2 font-medium text-gray-300">Creator Email</label>
+                    <input
+                    defaultValue={user.email}
+                        type="email"
+                        {...register("email", { required: true })}
+                        className="w-full p-3 rounded-lg bg-[#1F2A63] text-white placeholder-gray-400 focus:ring-2 focus:ring-green-400 focus:outline-none"
+                        placeholder="Enter creator email"
+                    />
+                    {errors.email && <p className="text-red-500 mt-1 text-sm">email is required</p>}
+                </div>
                 {/* Contest Name */}
                 <div>
                     <label className="block mb-2 font-medium text-gray-300">Contest Name</label>

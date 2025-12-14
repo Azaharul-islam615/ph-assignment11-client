@@ -3,9 +3,10 @@ import { BsStack } from 'react-icons/bs';
 import { FaClipboardList, FaRegEdit } from 'react-icons/fa';
 import { FiUpload } from 'react-icons/fi';
 import { IoBagAdd } from 'react-icons/io5';
-import { Link, NavLink, Outlet } from 'react-router';
+import { Link, NavLink, Outlet, useParams } from 'react-router';
 
 const DashboardLayout = () => {
+    const {id}=useParams()
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -66,7 +67,7 @@ const DashboardLayout = () => {
                             
                         </li>
                         <li>
-                            <Link to="/dashboard/editcontest" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Edit Contest">
+                            <Link to={`/dashboard/editcontest/${id}`} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Edit Contest">
                                
                                 <FaRegEdit size={16} />
                                 <span className="is-drawer-close:hidden">EditContest</span>
