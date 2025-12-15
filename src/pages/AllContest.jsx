@@ -1,52 +1,23 @@
 import React, { useState } from "react";
+import UseaxiosSecure from "../hooks/UseaxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router";
 
 const AllContests = () => {
     const [activeTab, setActiveTab] = useState("All");
+    const axiosSecure = UseaxiosSecure()
+    const { data: contests = [] } = useQuery({
+        queryKey: ['contest', 'approved'],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/contest?status=approved');
+            return res.data;
+        }
+    });
+    console.log(contests)
 
-    const contests = [
-        {
-            id: 1,
-            name: "Logo Design Challenge",
-            type: "Image Design",
-            img: "https://images.unsplash.com/photo-1587614382346-4ec70e388b28",
-            participants: 120,
-            description: "Create a modern and minimalistic logo that represents creativity...",
-        },
-        {
-            id: 2,
-            name: "Article Writing Contest",
-            type: "Article Writing",
-            img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b",
-            participants: 98,
-            description: "Write a powerful article that inspires youth and carries a strong message...",
-        },
-        {
-            id: 3,
-            name: "Photography Showdown",
-            type: "Photography",
-            img: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f",
-            participants: 87,
-            description: "Capture an aesthetic moment that showcases emotion and storytelling...",
-        },
-        {
-            id: 4,
-            name: "Business Idea Contest",
-            type: "Business Idea",
-            img: "https://images.unsplash.com/photo-1552664730-d307ca884978",
-            participants: 75,
-            description: "Present a unique business solution that solves modern-day problems...",
-        },
-        {
-            id: 5,
-            name: "Short Film Competition",
-            type: "Film Making",
-            img: "https://images.unsplash.com/photo-1515377905703-c4788e51af15",
-            participants: 64,
-            description: "Create a short emotional film under 2 minutes with a strong storyline...",
-        },
-    ];
+    
 
-    const tabs = ["All", "Image Design", "Article Writing", "Photography", "Business Idea", "Film Making"];
+    const tabs = ["All", "design", "writing", "coding"];
 
     const filteredContests =
         activeTab === "All"
@@ -83,10 +54,10 @@ const AllContests = () => {
             {/* Cards Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredContests.map((contest) => (
-                    <div key={contest.id} className="card bg-white shadow-lg rounded-xl">
+                    <div key={contest._id} className="card bg-white shadow-lg rounded-xl">
                         <figure>
                             <img
-                                src={contest.img}
+                                src={contest.image}
                                 alt={contest.name}
                                 className="h-48 w-full object-cover rounded-t-xl"
                             />
@@ -98,9 +69,9 @@ const AllContests = () => {
                                 Participants: {contest.participants}
                             </p>
                             <div className="card-actions justify-end mt-3">
-                                <button className="btn bg-blue-600 text-white hover:bg-blue-700">
+                                <Link to={`/contestdetails/${contest._id}`} className="btn bg-blue-600 text-white hover:bg-blue-700">
                                     Details
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </div>

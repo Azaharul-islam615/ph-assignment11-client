@@ -24,6 +24,9 @@ import SubmittedTasks from './pages/Dashboard/Submitted Tasks/SubmittedTasks.jsx
 import EditContest from './pages/Dashboard/Edit contest/Editcontest.jsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import ManageContests from './pages/Dashboard/Manage Contests/ManageContests.jsx'
+import Payment from './pages/Dashboard/Payment/Payment.jsx'
+import PaymentSuccess from './pages/Dashboard/Payment/PaymentSuccess.jsx'
+import PaymentCancelled from './pages/Dashboard/Payment/PaymentCancelled.jsx'
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -51,7 +54,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/contestdetails/:id',
-        Component: ContestDetails
+        element:<Privetroutes><ContestDetails></ContestDetails></Privetroutes>
       },
       {
         path: '/login',
@@ -86,7 +89,17 @@ const router = createBrowserRouter([
       },
       {path:'manageContest',
         Component:ManageContests
+      },
+      {path:'payment/:contestId',
+        Component:Payment
+      },
+      { path:'payment-success',
+        Component:PaymentSuccess
+      },
+      { path:'payment-cancelled',
+        Component:PaymentCancelled
       }
+
     ]
   }
 ])

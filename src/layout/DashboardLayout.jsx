@@ -41,6 +41,15 @@ const DashboardLayout = () => {
 
                         {/* List item */}
                         <li>
+                            <Link to="/dashboard/createContest" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyParticipatedContest">
+                                {/* Home icon */}
+                                <IoBagAdd size={16}></IoBagAdd>
+                                <span className="is-drawer-close:hidden">MyParticipatedContest</span>
+                            </Link>
+
+
+                        </li>
+                        <li>
                             <Link to="/dashboard/createContest" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Create-Contest">
                                 {/* Home icon */}
                                 <IoBagAdd  size={16}></IoBagAdd>
