@@ -1,6 +1,6 @@
 import React from 'react';
 import { BsStack } from 'react-icons/bs';
-import { FaClipboardList, FaRegEdit } from 'react-icons/fa';
+import { FaClipboardList, FaFileAlt, FaRegEdit } from 'react-icons/fa';
 import { FiUpload } from 'react-icons/fi';
 import { IoBagAdd } from 'react-icons/io5';
 import { MdManageAccounts } from 'react-icons/md';
@@ -41,9 +41,9 @@ const DashboardLayout = () => {
 
                         {/* List item */}
                         <li>
-                            <Link to="/dashboard/createContest" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyParticipatedContest">
+                            <Link to="/dashboard/mycontest" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyParticipatedContest">
                                 {/* Home icon */}
-                                <IoBagAdd size={16}></IoBagAdd>
+                                <FaFileAlt size={16} />
                                 <span className="is-drawer-close:hidden">MyParticipatedContest</span>
                             </Link>
 

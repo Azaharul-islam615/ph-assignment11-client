@@ -45,6 +45,20 @@ const ContestDetails = () => {
 
     const isContestEnded = !timeLeft;
 
+    const handled=async(contest)=>{
+        const paymentInfo = {
+            price: contest.price,
+            contestId: contest._id,
+            customer_email: contest.email,
+            name: contest.name,
+            prize:contest.prize,
+            deadline: contest.deadline
+        }
+        const res = await axiosSecure.post('/create-checkout-session', paymentInfo)
+        console.log(res.data)
+        window.location.assign(res.data.url)
+    }
+
     return (
         <div className="bg-[#050E3C] text-white min-h-screen py-12">
             <div className="max-w-5xl mx-auto px-4">
@@ -65,7 +79,7 @@ const ContestDetails = () => {
                 <div className="mt-6 bg-[#0C1A4A] p-6 rounded-xl grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                     <div>
                         <p className="text-gray-300">Participants</p>
-                        <h2 className="text-3xl font-bold">120</h2>
+                        <h2 className="text-3xl font-bold">{contest?.participants}</h2>
                     </div>
 
                     <div>
@@ -93,7 +107,7 @@ const ContestDetails = () => {
 
                 {/* Buttons */}
                 <div className="mt-8 flex flex-col md:flex-row gap-4">
-                    <Link to={`/dashboard/payment/${contest?._id}`}
+                    <button onClick={()=>handled(contest)}
                         disabled={isContestEnded}
                         className={`px-6 py-3 rounded-xl font-bold
                             ${isContestEnded
@@ -102,7 +116,7 @@ const ContestDetails = () => {
                             }`}
                     >
                         {isContestEnded ? "Contest Ended" : "Register / Pay"}
-                    </Link>
+                    </button>
 
                     <button
                         disabled={isContestEnded}
