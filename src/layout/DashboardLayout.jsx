@@ -1,5 +1,6 @@
 import React from 'react';
 import { BsStack } from 'react-icons/bs';
+import { CgProfile } from 'react-icons/cg';
 import { FaClipboardList, FaFileAlt, FaRegEdit } from 'react-icons/fa';
 import { FiUpload } from 'react-icons/fi';
 import { GiPodiumWinner } from 'react-icons/gi';
@@ -55,6 +56,15 @@ const DashboardLayout = () => {
                                 {/* Home icon */}
                                 <GiPodiumWinner size={16} />
                                 <span className="is-drawer-close:hidden"> MyWinningContests</span>
+                            </Link>
+
+
+                        </li>
+                        <li>
+                            <Link to="/dashboard/myProfile" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip=" My Profile">
+                                {/* Home icon */}
+                                <CgProfile size={16}/>
+                                <span className="is-drawer-close:hidden">My Profile</span>
                             </Link>
 
 

@@ -7,33 +7,49 @@ import { MdOutlineFormatIndentIncrease } from "react-icons/md";
 import axios from "axios";
 import { auth, AuthContext } from "../Context/Authprovider";
 import Swal from "sweetalert2";
+import UseaxiosSecure from "../hooks/UseAxiosSecure";
 
 
 const Register = () => {
+    const { register,
+        handleSubmit, formState: { errors } } = useForm()
     const { googleauth, createUser, updateuserprofile, setUser } = use(AuthContext)
 
     const navigate = useNavigate()
     const location = useLocation()
+    
 
-    const { register,
-        handleSubmit, formState: { errors } } = useForm()
+   const axiosSecure=UseaxiosSecure()
 
     const handleRegistration = (data, e) => {
 
         const profileImage = data.photo[0]
         createUser(data.email, data.password)
-            .then(result => {
+            .then(() => {
                 const formData = new FormData()
                 formData.append("image", profileImage)
                 const ImageUrl = `https://api.imgbb.com/1/upload?expiration=600&key=${import.meta.env.VITE_image_host}`
                 navigate("/");
-                console.log(result.user)
+                
                 axios.post(ImageUrl, formData)
                     .then(res => {
-                        console.log('after image upload', res.data.data.url)
+                        const photoURL= res.data.data.url
+                        // create user in the database
+                        const userInfo={
+                            email:data.email,
+                            displayName:data.name,
+                            photoURL: photoURL
+                        }
+                        axiosSecure.post('/users',userInfo)
+                        .then(res=>{
+                            if(res.data.insertedId){
+                                console.log('user created in the database')
+                            }
+                        })
+
                         const userProfile = {
                             displayName: data.name,
-                            photoURL: res.data.data.url
+                            photoURL:photoURL
                         }
                         updateuserprofile(userProfile)
                             .then(() => {
@@ -68,6 +84,17 @@ const Register = () => {
     const handlegoogle = () => {
         googleauth()
             .then(result => {
+                const userInfo = {
+                    email: result.user.email,
+                    displayName: result.user.displayName,
+                    photoURL: result.user.photoURL
+                }
+                axiosSecure.post('/users',userInfo)
+                .then(res=>{
+                    if(res.data.insertedId){
+                        console.log('user created in the database')
+                    }
+                })
                 Swal.fire({
                     position: "top-end",
                     icon: "success",

@@ -36,6 +36,25 @@ const ManageContests = () => {
     const handleRejection = (contest)=>{
         updateContest(contest,'rejected')
    }
+   const hanldeledDelete=(contest)=>{
+       axiosSecure.delete(`/contest/${contest._id}`)
+           .then(res => {
+               if (res.data.deletedCount > 0){
+                   refetch()
+
+                   Swal.fire({
+                       icon: "success",
+                       title: `${status}`,
+                       text: `Contest delete successfully`,
+                       timer: 1500,
+                       showConfirmButton: false,
+                   });
+               }
+              
+               })
+           
+
+   }
     return (
         <div className="max-w-7xl mx-auto my-10 p-6 bg-[#0C1A4A] text-white rounded-2xl shadow-2xl">
             <h2 className="text-3xl font-bold mb-6 text-green-400">
@@ -84,7 +103,7 @@ const ManageContests = () => {
                                     <button onClick={()=>handleRejection(contest)} className="bg-yellow-500 hover:bg-yellow-600 px-3 py-1 rounded text-sm text-black">
                                         Reject
                                     </button>
-                                    <button className="bg-red-500 hover:bg-red-600 px-3 py-1 rounded text-sm">
+                                    <button onClick={()=>hanldeledDelete(contest)} className="bg-red-500 hover:bg-red-600 px-3 py-1 rounded text-sm">
                                         Delete
                                     </button>
                                 </td>

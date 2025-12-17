@@ -41,7 +41,7 @@ const MyParticipatedContests = () => {
                     </thead>
                     <tbody>
                         {payments.map((contest, index) => (
-                            <tr key={contest.id}>
+                            <tr key={contest._id}>
                                 <td>{index + 1}</td>
                                 <td>{contest.contestName}</td>
                                 <td>{contest.deadline}</td>

@@ -6,9 +6,11 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import { use } from 'react';
 import { AuthContext } from '../Context/Authprovider';
 import Swal from 'sweetalert2';
+import UseaxiosSecure from '../hooks/UseAxiosSecure';
 
 const Login = () => {
     const { googleauth, login } = use(AuthContext)
+    const axiosSecure=UseaxiosSecure()
 
     const navigate = useNavigate()
     const location = useLocation()
@@ -37,6 +39,17 @@ const Login = () => {
         googleauth()
             .then(result => {
                 console.log(result.user)
+                const userInfo = {
+                    email: result.user.email,
+                    displayName: result.user.displayName,
+                    photoURL: result.user.photoURL
+                }
+                axiosSecure.post('/users', userInfo)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            console.log('user created in the database')
+                        }
+                    })
                 Swal.fire({
                     position: "top-end",
                     icon: "success",

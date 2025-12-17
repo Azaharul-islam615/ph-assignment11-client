@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { Link } from "react-router";
-import UseaxiosSecure from "../hooks/UseaxiosSecure";
+import UseaxiosSecure from "../hooks/UseAxiosSecure";
 
 const PopularContests = () => {
     const axiosSecure = UseaxiosSecure()
@@ -12,7 +12,7 @@ const PopularContests = () => {
             return res.data
         }
     })
-    console.log(contests)
+    
    
     return (
         <div className="w-11/12 mx-auto py-12">

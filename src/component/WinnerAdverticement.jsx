@@ -9,7 +9,7 @@ const WinnerAdvertisement = () => {
 
         queryKey: ['payments'],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/payments`)
+            const res = await axiosSecure.get(`/public-winners`)
             return res.data
         }
     })
@@ -18,7 +18,7 @@ const WinnerAdvertisement = () => {
        
     }, 0);
     const winnerCount = payments.filter(payment => payment.isWinner).length;
-    console.log(payments)
+
     return (
         <section className="bg-[#050E3C] py-16 text-white">
             <div className="max-w-6xl mx-auto px-4 text-center">
@@ -56,7 +56,7 @@ const WinnerAdvertisement = () => {
                         .filter(winner => winner.isWinner)  // শুধু winner ফিল্টার
                         .map((winner, idx) => (
                             <div key={idx} className="bg-white rounded-xl shadow-lg overflow-hidden">
-                                <img src={winner.image} className="w-full h-48 object-cover" alt={winner.name} />
+                                <img  src={winner.image} className="object-bottom  w-full h-48 " alt={winner.name} />
                                 <div className="p-6 text-left">
                                     <h3 className="text-lg font-bold text-black">{winner.userName}</h3>
                                     <p className="text-gray-700 text-sm mt-1">Won: {winner.contestName}</p>

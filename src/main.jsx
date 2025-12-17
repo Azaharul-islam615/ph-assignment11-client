@@ -29,6 +29,7 @@ import PaymentSuccess from './pages/Dashboard/Payment/PaymentSuccess.jsx'
 import PaymentCancelled from './pages/Dashboard/Payment/PaymentCancelled.jsx'
 import MyParticipatedContests from './pages/Dashboard/MyParticipatedContests.jsx'
 import MyWinningContests from './pages/Dashboard/MyWinningContests.jsx'
+import MyProfile from './pages/Dashboard/MyProfile.jsx'
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -106,6 +107,10 @@ const router = createBrowserRouter([
       },
       {path:'winning',
         Component:MyWinningContests
+      },
+      {
+        path:'myProfile',
+        Component:MyProfile
       }
 
     ]
