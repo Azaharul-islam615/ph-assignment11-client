@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 const SubmittedTasks = () => {
     const { user } = use(AuthContext)
-    console.log(user)
+
     const axiosSecure = UseaxiosSecure()
     const {refetch, data: payments = [] } = useQuery({
 
@@ -38,7 +38,7 @@ const SubmittedTasks = () => {
         }
     };
 
-    console.log(payments)
+   
     return (
         <div className="max-w-6xl mx-auto my-10 p-6 bg-[#0C1A4A] text-white rounded-2xl shadow-2xl">
             <h2 className="text-3xl font-bold mb-6 text-green-400">

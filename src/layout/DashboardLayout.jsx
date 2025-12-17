@@ -4,6 +4,7 @@ import { CgProfile } from 'react-icons/cg';
 import { FaClipboardList, FaFileAlt, FaRegEdit } from 'react-icons/fa';
 import { FiUpload } from 'react-icons/fi';
 import { GiPodiumWinner } from 'react-icons/gi';
+import { GrUserManager } from 'react-icons/gr';
 import { IoBagAdd } from 'react-icons/io5';
 import { MdManageAccounts } from 'react-icons/md';
 import { Link, NavLink, Outlet, useParams } from 'react-router';
@@ -102,6 +103,15 @@ const DashboardLayout = () => {
                                
                                 <MdManageAccounts size={20}/>
                                 <span className="is-drawer-close:hidden">Manage Contests</span>
+                            </Link>
+                            
+                            
+                        </li>
+                        <li>
+                            <Link to={`/dashboard/manageUsers`} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Users">
+                               
+                                <GrUserManager size={16} />
+                                <span className="is-drawer-close:hidden">Manage Users</span>
                             </Link>
                             
                             
