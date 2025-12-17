@@ -8,9 +8,19 @@ import { GrUserManager } from 'react-icons/gr';
 import { IoBagAdd } from 'react-icons/io5';
 import { MdManageAccounts } from 'react-icons/md';
 import { Link, NavLink, Outlet, useParams } from 'react-router';
+import useRole from '../hooks/useRole';
 
 const DashboardLayout = () => {
-    
+    const { role,isLoading } = useRole()
+    if (isLoading) {
+        return (
+            <div className="flex h-screen items-center justify-center">
+                <span className="loading loading-spinner loading-lg"></span>
+            </div>
+        );
+       
+    }
+
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -24,7 +34,7 @@ const DashboardLayout = () => {
                     <div className="px-4">Navbar Title</div>
                 </nav>
                 {/* Page content here */}
-               
+
                 <Outlet></Outlet>
             </div>
 
@@ -64,7 +74,7 @@ const DashboardLayout = () => {
                         <li>
                             <Link to="/dashboard/myProfile" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip=" My Profile">
                                 {/* Home icon */}
-                                <CgProfile size={16}/>
+                                <CgProfile size={16} />
                                 <span className="is-drawer-close:hidden">My Profile</span>
                             </Link>
 
@@ -73,49 +83,53 @@ const DashboardLayout = () => {
                         <li>
                             <Link to="/dashboard/createContest" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Create-Contest">
                                 {/* Home icon */}
-                                <IoBagAdd  size={16}></IoBagAdd>
+                                <IoBagAdd size={16}></IoBagAdd>
                                 <span className="is-drawer-close:hidden">Create-Contest</span>
                             </Link>
-                            
-                            
+
+
                         </li>
                         <li>
                             <Link to="/dashboard/mycreatedcontest" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Created Contests">
-                               
+
                                 <FaClipboardList size={16} ></FaClipboardList>
                                 <span className="is-drawer-close:hidden">MyCreatedContests</span>
                             </Link>
-                            
-                            
+
+
                         </li>
                         <li>
                             <Link to="/dashboard/submittedTask" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Submitted Tasks">
-                               
+
                                 <FiUpload size={16} />
                                 <span className="is-drawer-close:hidden">Submitted Tasks</span>
                             </Link>
-                            
-                            
+
+
                         </li>
-                       
-                        <li>
-                            <Link to={`/dashboard/manageContest`} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Contests">
-                               
-                                <MdManageAccounts size={20}/>
-                                <span className="is-drawer-close:hidden">Manage Contests</span>
-                            </Link>
-                            
-                            
-                        </li>
-                        <li>
-                            <Link to={`/dashboard/manageUsers`} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Users">
-                               
-                                <GrUserManager size={16} />
-                                <span className="is-drawer-close:hidden">Manage Users</span>
-                            </Link>
-                            
-                            
-                        </li>
+                        {
+                            role.role === 'admin' && <>
+
+                                <li>
+                                    <Link to={`/dashboard/manageContest`} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Contests">
+
+                                        <MdManageAccounts size={20} />
+                                        <span className="is-drawer-close:hidden">Manage Contests</span>
+                                    </Link>
+
+
+                                </li>
+                                <li>
+                                    <Link to={`/dashboard/manageUsers`} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Users">
+
+                                        <GrUserManager size={16} />
+                                        <span className="is-drawer-close:hidden">Manage Users</span>
+                                    </Link>
+
+
+                                </li>
+                            </>
+                        }
                         <li>
                             <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Settings">
                                 {/* Settings icon */}
