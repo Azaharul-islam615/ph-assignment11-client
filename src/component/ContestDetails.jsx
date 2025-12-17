@@ -53,7 +53,8 @@ const ContestDetails = () => {
             name: contest.name,
             prize: contest.prize,
             deadline: contest.deadline,
-            userName: user.displayName
+            userName: user.displayName,
+            image:user.photoURL
         };
         const res = await axiosSecure.post('/create-checkout-session', paymentInfo);
         window.location.assign(res.data.url);
@@ -72,7 +73,8 @@ const ContestDetails = () => {
 
          
             await axiosSecure.patch(`/payments/${paymentRecord._id}`, {
-                submittedTask: taskLink
+                submittedTask: taskLink,
+             
             });
 
             Swal.fire({
