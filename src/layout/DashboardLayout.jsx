@@ -11,8 +11,8 @@ import { Link, NavLink, Outlet, useParams } from 'react-router';
 import useRole from '../hooks/useRole';
 
 const DashboardLayout = () => {
-    const { role,isLoading } = useRole()
-    if (isLoading) {
+    const { role,roleLoading } = useRole()
+    if (roleLoading) {
         return (
             <div className="flex h-screen items-center justify-center">
                 <span className="loading loading-spinner loading-lg"></span>

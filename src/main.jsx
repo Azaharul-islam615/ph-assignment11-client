@@ -31,6 +31,7 @@ import MyParticipatedContests from './pages/Dashboard/MyParticipatedContests.jsx
 import MyWinningContests from './pages/Dashboard/MyWinningContests.jsx'
 import MyProfile from './pages/Dashboard/MyProfile.jsx'
 import ManageUsers from './pages/Dashboard/Manage Users/ManageUsers.jsx'
+import AdminRoute from './component/AdminRoute.jsx'
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -114,7 +115,7 @@ const router = createBrowserRouter([
         Component:MyProfile
       },
       {path:'manageUsers',
-        Component:ManageUsers
+        element:<AdminRoute><ManageUsers></ManageUsers></AdminRoute>
       }
 
     ]
