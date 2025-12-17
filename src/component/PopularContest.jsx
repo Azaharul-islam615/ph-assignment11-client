@@ -47,7 +47,7 @@ const PopularContests = () => {
                             </h2>
 
                             <p className="text-sm text-gray-600">
-                                {contest.description.slice(0, 80)}...
+                                {contest.description?.slice(0, 80)}...
                             </p>
 
                             <p className="font-medium text-blue-600 mt-2">

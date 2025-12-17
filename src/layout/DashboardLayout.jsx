@@ -2,6 +2,7 @@ import React from 'react';
 import { BsStack } from 'react-icons/bs';
 import { FaClipboardList, FaFileAlt, FaRegEdit } from 'react-icons/fa';
 import { FiUpload } from 'react-icons/fi';
+import { GiPodiumWinner } from 'react-icons/gi';
 import { IoBagAdd } from 'react-icons/io5';
 import { MdManageAccounts } from 'react-icons/md';
 import { Link, NavLink, Outlet, useParams } from 'react-router';
@@ -50,6 +51,15 @@ const DashboardLayout = () => {
 
                         </li>
                         <li>
+                            <Link to="/dashboard/winning" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip=" MyWinningContests">
+                                {/* Home icon */}
+                                <GiPodiumWinner size={16} />
+                                <span className="is-drawer-close:hidden"> MyWinningContests</span>
+                            </Link>
+
+
+                        </li>
+                        <li>
                             <Link to="/dashboard/createContest" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Create-Contest">
                                 {/* Home icon */}
                                 <IoBagAdd  size={16}></IoBagAdd>
@@ -76,15 +86,7 @@ const DashboardLayout = () => {
                             
                             
                         </li>
-                        <li>
-                            <Link to={`/dashboard/editcontest`} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Edit Contest">
-                               
-                                <FaRegEdit size={16} />
-                                <span className="is-drawer-close:hidden">EditContest</span>
-                            </Link>
-                            
-                            
-                        </li>
+                       
                         <li>
                             <Link to={`/dashboard/manageContest`} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Contests">
                                
