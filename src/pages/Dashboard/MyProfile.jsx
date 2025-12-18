@@ -1,65 +1,144 @@
-import React from "react";
+import React, { use } from "react";
 import { PieChart, Pie, Cell, Legend, Tooltip } from "recharts";
+import { AuthContext } from "../../Context/Authprovider";
+import UseaxiosSecure from "../../hooks/UseAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import Swal from "sweetalert2";
 
 const MyProfile = () => {
-    // Static data
-    const user = {
-        name: "Mehedi Hasan",
-        photo: "https://images.unsplash.com/photo-1607746882042-944635dfe10e",
-        bio: "Creative Designer",
-        email: "mehedi@gmail.com"
-    };
 
-    const won = 8;
-    const participated = 20;
+    const {user}=use(AuthContext)
+    const axiosSecure=UseaxiosSecure()
+    const { data: profile = {}, isLoading } = useQuery({
+        queryKey: ['profile', user?.email],
+     
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/users/profile/${user.email}`);
+            return res.data;
+        }
+    });
+
+
+
+    const { data: stats = {}, isLoading: statsLoading } = useQuery({
+        queryKey: ['user-stats', user?.email],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/users/stats/${user.email}`);
+            return res.data;
+        },
+       
+    });
+   
+
+    const won = stats.won || 0;
+    const participated = stats.participated || 0;
+    const lost = participated - won;
+
+    const winPercentage = participated
+        ? Math.round((won / participated) * 100)
+        : 0;
 
     const data = [
         { name: "Won", value: won },
         { name: "Lost", value: participated - won }
     ];
 
+    
+    const handledUpdate=async(e)=>{
+        e.preventDefault();
+
+        const form = e.target;
+        const updatedProfile = {
+            displayName: form.name.value,
+            photoURL: form.photo.value,
+            
+            bio: form.bio.value
+        };
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'Do you want to update your profile?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, update it',
+            cancelButtonText: 'Cancel'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+
+                const res = await axiosSecure.patch(
+                    `/users/profile/${user.email}`,
+                    updatedProfile
+                );
+
+                if (res.data.modifiedCount > 0) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Profile Updated!',
+                        text: 'Your profile has been updated successfully.',
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+                }
+            }
+        });
+
+
+    }
+
+    // Static data
+   
+
+   
+
+    
+
     const COLORS = ["#4ade80", "#f87171"]; // green for won, red for lost
 
     return (
-        <div className="min-h-screen bg-[#050E3C] text-white flex flex-col items-center py-12 px-4">
+        <div className=" min-h-screen bg-[#050E3C] text-white flex flex-col items-center py-12 px-4">
             <div className="max-w-3xl w-full bg-[#0C1A4A] p-8 rounded-2xl shadow-2xl">
                 <h1 className="text-3xl font-bold mb-6">My Profile</h1>
 
                 
                 <div className="flex items-center gap-6 mb-8">
                     <img
-                        src={user.photo}
-                        alt={user.name}
+                        src={profile.photoURL}
+                        alt={profile.displayName}
                         className="w-24 h-24 rounded-full object-cover border-4 border-indigo-500"
                     />
                     <div>
-                        <h2 className="text-xl font-bold">{user.name}</h2>
-                        <p className="text-gray-300">{user.bio}</p>
-                        <p className="text-gray-400 text-sm">{user.email}</p>
+                        <h2 className="text-xl font-bold">{profile.displayName}</h2>
+                        <p className="text-gray-300">{profile.bio}</p>
+                        <p className="text-gray-400 text-sm">{profile.email}</p>
                     </div>
                 </div>
 
                 {/* Update Form */}
                 <div className="mb-10">
                     <h2 className="text-2xl font-bold mb-4">Update Info</h2>
-                    <form className="flex flex-col gap-4">
+                    <form onSubmit={handledUpdate} className="flex flex-col gap-4">
                         <input
+                        name="name"
                             type="text"
                             placeholder="Name"
                             className="p-3 rounded-lg bg-[#1F2A63] outline-none text-white"
-                            defaultValue={user.name}
+                            defaultValue={profile.displayName}
                         />
                         <input
+                            name="photo"
                             type="text"
                             placeholder="Photo URL"
                             className="p-3 rounded-lg bg-[#1F2A63] outline-none text-white"
-                            defaultValue={user.photo}
+                            defaultValue={profile.photoURL}
                         />
                         <input
+                        name="bio"
                             type="text"
-                            placeholder="Bio / Address"
+                            placeholder="Bio "
                             className="p-3 rounded-lg bg-[#1F2A63] outline-none text-white"
-                            defaultValue={user.bio}
+                            defaultValue={profile.bio}
                         />
                         <button className="bg-indigo-600 hover:bg-indigo-700 px-6 py-3 rounded-xl font-bold text-white">
                             Update Profile
@@ -68,7 +147,7 @@ const MyProfile = () => {
                 </div>
 
                 {/* Win Percentage Chart */}
-                <div>
+                <div >
                     <h2 className="text-2xl font-bold mb-4">Win Percentage</h2>
                     <PieChart width={300} height={300}>
                         <Pie
