@@ -58,16 +58,22 @@ const Navbar = () => {
                             </svg>
                         </div>
                         <ul
-                            tabIndex={-1}
-                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                            tabIndex={0}
+                            className="menu  absolute top-6 z-40 right-[-150px] text-[8px] menu-sm dropdown-content bg-black rounded-box mt-3 w-52 p-2 shadow "
                         >
                             {links}
                         </ul>
+                       
+                    
                     </div>
 
                     <div className="flex items-center">
-                        <img className="w-[70px] h-[70px] rounded-full" src={img1} alt="" />
-                        <a className="btn btn-ghost text-2xl p-2 font-extrabold">
+                        <img
+                            className="hidden md:block md:w-[70px] md:h-[70px] rounded-full"
+                            src={img1}
+                            alt=""
+                        />
+                        <a className="btn btn-ghost text-[18px] md:text-2xl p-2 font-extrabold">
                             ContestHub
                         </a>
                     </div>
@@ -82,7 +88,7 @@ const Navbar = () => {
 
                 {/* RIGHT */}
                 <div className="navbar-end flex items-center gap-2">
-                    <input onClick={handleTheme} type="checkbox" defaultChecked className="mr-2 toggle toggle-warning" />
+                    <input onClick={handleTheme} type="checkbox" defaultChecked className="md:mr-2 toggle toggle-warning" />
                     {!user ? (
                         <>
                             <Link
@@ -101,7 +107,7 @@ const Navbar = () => {
                     ) : (
                         <button
                             onClick={handleLogout}
-                            className="btn bg-[#050E3C] text-white hover:bg-[#2563EB] font-semibold text-[16px]"
+                            className="btn bg-[#050E3C] text-white hover:bg-[#2563EB] font-semibold text-[14px] md:text-[16px]"
                         >
                             Logout
                         </button>

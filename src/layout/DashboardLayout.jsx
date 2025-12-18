@@ -6,7 +6,7 @@ import { FiUpload } from 'react-icons/fi';
 import { GiPodiumWinner } from 'react-icons/gi';
 import { GrUserManager } from 'react-icons/gr';
 import { IoBagAdd } from 'react-icons/io5';
-import { MdManageAccounts } from 'react-icons/md';
+import { MdLeaderboard, MdManageAccounts } from 'react-icons/md';
 import { Link, NavLink, Outlet, useParams } from 'react-router';
 import useRole from '../hooks/useRole';
 
@@ -76,6 +76,15 @@ const DashboardLayout = () => {
                                 {/* Home icon */}
                                 <CgProfile size={16} />
                                 <span className="is-drawer-close:hidden">My Profile</span>
+                            </Link>
+
+
+                        </li>
+                        <li>
+                            <Link to="/dashboard/leaderboard" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Leaderboard">
+                                {/* Home icon */}
+                                <MdLeaderboard  size={16}/>
+                                <span className="is-drawer-close:hidden">Leaderboard</span>
                             </Link>
 
 

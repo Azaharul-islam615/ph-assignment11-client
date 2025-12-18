@@ -33,6 +33,7 @@ import MyProfile from './pages/Dashboard/MyProfile.jsx'
 import ManageUsers from './pages/Dashboard/Manage Users/ManageUsers.jsx'
 import AdminRoute from './component/AdminRoute.jsx'
 import CreatorRoute from './component/CreatorRoute.jsx'
+import Leaderboard from './pages/Dashboard/Leaderboard/Leaderboard.jsx'
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -117,6 +118,9 @@ const router = createBrowserRouter([
       },
       {path:'manageUsers',
         element:<AdminRoute><ManageUsers></ManageUsers></AdminRoute>
+      },
+      {path:'leaderboard',
+        Component:Leaderboard
       }
 
     ]
