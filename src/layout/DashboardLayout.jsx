@@ -80,33 +80,37 @@ const DashboardLayout = () => {
 
 
                         </li>
-                        <li>
-                            <Link to="/dashboard/createContest" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Create-Contest">
-                                {/* Home icon */}
-                                <IoBagAdd size={16}></IoBagAdd>
-                                <span className="is-drawer-close:hidden">Create-Contest</span>
-                            </Link>
+                       {
+                        role.role==='Creator' && <>
+                                <li>
+                                    <Link to="/dashboard/createContest" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Create-Contest">
+                                        {/* Home icon */}
+                                        <IoBagAdd size={16}></IoBagAdd>
+                                        <span className="is-drawer-close:hidden">Create-Contest</span>
+                                    </Link>
 
 
-                        </li>
-                        <li>
-                            <Link to="/dashboard/mycreatedcontest" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Created Contests">
+                                </li>
+                                <li>
+                                    <Link to="/dashboard/mycreatedcontest" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Created Contests">
 
-                                <FaClipboardList size={16} ></FaClipboardList>
-                                <span className="is-drawer-close:hidden">MyCreatedContests</span>
-                            </Link>
-
-
-                        </li>
-                        <li>
-                            <Link to="/dashboard/submittedTask" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Submitted Tasks">
-
-                                <FiUpload size={16} />
-                                <span className="is-drawer-close:hidden">Submitted Tasks</span>
-                            </Link>
+                                        <FaClipboardList size={16} ></FaClipboardList>
+                                        <span className="is-drawer-close:hidden">MyCreatedContests</span>
+                                    </Link>
 
 
-                        </li>
+                                </li>
+                                <li>
+                                    <Link to="/dashboard/submittedTask" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Submitted Tasks">
+
+                                        <FiUpload size={16} />
+                                        <span className="is-drawer-close:hidden">Submitted Tasks</span>
+                                    </Link>
+
+
+                                </li>
+                        </>
+                       }
                         {
                             role.role === 'admin' && <>
 

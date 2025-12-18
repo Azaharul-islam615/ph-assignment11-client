@@ -32,6 +32,7 @@ import MyWinningContests from './pages/Dashboard/MyWinningContests.jsx'
 import MyProfile from './pages/Dashboard/MyProfile.jsx'
 import ManageUsers from './pages/Dashboard/Manage Users/ManageUsers.jsx'
 import AdminRoute from './component/AdminRoute.jsx'
+import CreatorRoute from './component/CreatorRoute.jsx'
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -80,20 +81,20 @@ const router = createBrowserRouter([
     children:[
       {
         path:'createContest',
-        Component:Mycontests
+        element: <CreatorRoute><Mycontests></Mycontests></CreatorRoute>
 
       },
       {path:'mycreatedcontest',
-        Component:MyCreatedContests
+        element:<CreatorRoute><MyParticipatedContests></MyParticipatedContests></CreatorRoute>
       },
       {path:'submittedTask',
-        Component:SubmittedTasks
+        element:<CreatorRoute><SubmittedTasks></SubmittedTasks></CreatorRoute>
       },
       {path:'editcontest/:id',
         Component:EditContest
       },
       {path:'manageContest',
-        Component:ManageContests
+        element:<AdminRoute><ManageContests></ManageContests></AdminRoute>
       },
       {path:'payment/:contestId',
         Component:Payment
