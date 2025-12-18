@@ -24,6 +24,7 @@ const MyWinningContests = () => {
     
     return (
         <div data-aos="fade-up" className="w-11/12 mx-auto py-10">
+            <title>contestHub-mywinningcontest</title>
             {/* Page Title */}
             <h2 data-aos="fade-up" className="text-4xl font-bold flex items-center gap-3 mb-8 text-white">
                 <FaTrophy className="text-yellow-400" />

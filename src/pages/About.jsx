@@ -6,6 +6,7 @@ const About = () => {
     const {toggle}=use(AuthContext)
     return (
         <section className={`${toggle ? ' text-white' : 'bg-white text-black'}  py-16`}>
+            <title>contestHub-about</title>
             <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
 
                 {/* Image */}

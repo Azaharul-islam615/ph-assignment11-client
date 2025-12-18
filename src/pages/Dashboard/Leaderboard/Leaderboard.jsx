@@ -41,6 +41,7 @@ const Leaderboard = () => {
 
     return (
         <div data-aos="fade-up" className="min-h-screen bg-[#050E3C] text-white py-12 px-4">
+            <title>contestHub-leaderboard</title>
             <div data-aos="fade-up" className="max-w-4xl mx-auto bg-[#0C1A4A] p-4 md:p-8 rounded-xl shadow-lg overflow-x-auto">
                 <h1 data-aos="fade-up" className="text-3xl md:text-4xl font-bold mb-6 text-center">Leaderboard</h1>
 

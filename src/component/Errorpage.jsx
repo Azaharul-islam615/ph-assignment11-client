@@ -10,6 +10,7 @@ const Errorpage = () => {
     }
     return (
         <div data-aos="fade-up" className='text-center '>
+            <title>contestHub-Errorpage</title>
             <title>ContestHub-error 404</title>
             <img className='mx-auto mb-3 w-[440px] ' src={errorphoto} alt="" />
             <div>

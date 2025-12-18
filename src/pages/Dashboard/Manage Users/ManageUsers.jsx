@@ -70,6 +70,7 @@ const ManageUsers = () => {
    
     return (
         <div data-aos="fade-up" className="p-6">
+            <title>contestHub-manageusers</title>
             <h2 data-aos="fade-up" className="text-2xl font-semibold mb-4">Manage Users</h2>
             <p data-aos="fade-up" className="text-gray-500 mb-6">See all users & change roles</p>
 

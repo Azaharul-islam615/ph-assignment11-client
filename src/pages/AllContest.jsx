@@ -55,6 +55,7 @@ const AllContests = () => {
 
             {/* Cards Grid */}
             <div data-aos="fade-up" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <title>contestHub-allcontest</title>
                 {filteredContests.map((contest) => (
                     <div data-aos="fade-up" key={contest._id} className="card bg-white shadow-lg rounded-xl">
                         <figure>

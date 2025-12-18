@@ -117,6 +117,7 @@ const MyProfile = () => {
 
                 {/* Update Form */}
                 <div data-aos="fade-up" className="mb-10">
+                    <title>contestHub-myprofile</title>
                     <h2 className="text-2xl font-bold mb-4">Update Info</h2>
                     <form onSubmit={handledUpdate} className="flex flex-col gap-4">
                         <input

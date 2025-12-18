@@ -6,7 +6,7 @@ const Contact = () => {
     return (
         <section data-aos="fade-up" className={` ${toggle ? ' text-white' : 'bg-white text-black ' } py-16`}>
             <div data-aos="fade-up" className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12">
-
+                <title>contestHub-contact</title>
                 {/* Left Side – Info */}
                 <div data-aos="fade-up" className="space-y-6">
                     <h2 className={`text-4xl ${toggle ? 'text-gray-300 ' : ' text-black'} font-extrabold`}>📞 Contact Us</h2>

@@ -66,6 +66,7 @@ const EditContest = () => {
     return (
         <div data-aos="fade-up" className="max-w-3xl mx-auto my-12 p-8 bg-[#0C1A4A] text-white rounded-2xl shadow-2xl">
             <h2 data-aos="fade-up" className="text-3xl font-extrabold mb-6 text-yellow-400">
+                <title>contestHub-editecontest</title>
                 Edit Contest
             </h2>
 

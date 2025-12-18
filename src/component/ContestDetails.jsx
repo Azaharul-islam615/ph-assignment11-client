@@ -104,6 +104,7 @@ const ContestDetails = () => {
 
     return (
         <div data-aos="fade-up" className=" text-white min-h-screen py-12">
+            <title>contestHub-contestDelails</title>
             <div data-aos="fade-up" className="max-w-5xl mx-auto px-4">
                 <h1 data-aos="fade-up" className="text-4xl font-extrabold mb-4">{contest?.name}</h1>
                 <img data-aos="fade-up" src={contest?.image} className="w-full h-72 object-cover rounded-xl shadow-lg" alt="Contest Banner" />

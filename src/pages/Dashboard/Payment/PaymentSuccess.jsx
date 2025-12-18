@@ -18,6 +18,7 @@ const PaymentSuccess = () => {
     },[sessionId,axiosSecure])
     return (
         <div>
+            <title>contestHub-payment-successfull</title>
             <h2 className="text-4xl">payment-successfull</h2>
         </div>
     );

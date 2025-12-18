@@ -3,12 +3,12 @@ import React, { use, useEffect } from 'react';
 import { AuthContext } from '../Context/Authprovider';
 import { useNavigate } from 'react-router';
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:3000'
+    baseURL: 'https://contesthub-server-beige.vercel.app'
 })
 
 const UseaxiosSecure = () => {
     const { user, logout } = use(AuthContext)
-    const navigate=useNavigate()
+    const navigate = useNavigate()
     useEffect(() => {
         // intercept request
         const reqInterceptor = axiosSecure.interceptors.request.use(config => {
@@ -16,18 +16,18 @@ const UseaxiosSecure = () => {
             return config
         })
         // interceptor response
-        const resInterceptor =axiosSecure.interceptors.response.use((response)=>{
+        const resInterceptor = axiosSecure.interceptors.response.use((response) => {
 
             return response
 
-        },(error)=>{
+        }, (error) => {
             console.log(error)
-            const statusCode=error.status
-            if(statusCode === 401 || statusCode === 403){
+            const statusCode = error.status
+            if (statusCode === 401 || statusCode === 403) {
                 logout()
-                .then(()=>{
-                    navigate('/login')
-                })
+                    .then(() => {
+                        navigate('/login')
+                    })
 
             }
 
@@ -41,7 +41,7 @@ const UseaxiosSecure = () => {
 
         }
 
-    }, [user,logout,navigate])
+    }, [user, logout, navigate])
     return axiosSecure;
 };
 
