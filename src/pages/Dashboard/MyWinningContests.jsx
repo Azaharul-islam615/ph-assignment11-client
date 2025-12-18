@@ -23,15 +23,15 @@ const MyWinningContests = () => {
     })
     
     return (
-        <div className="w-11/12 mx-auto py-10">
+        <div data-aos="fade-up" className="w-11/12 mx-auto py-10">
             {/* Page Title */}
-            <h2 className="text-4xl font-bold flex items-center gap-3 mb-8 text-white">
+            <h2 data-aos="fade-up" className="text-4xl font-bold flex items-center gap-3 mb-8 text-white">
                 <FaTrophy className="text-yellow-400" />
                 My Winning Contests
             </h2>
 
             {/* Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div data-aos="fade-up" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {payments
                     .filter(winner => winner.isWinner).map((contest) => (
                     <div

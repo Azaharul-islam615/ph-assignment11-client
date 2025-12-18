@@ -65,8 +65,8 @@ const Login = () => {
 
     }
     return (
-        <div className="text-white flex justify-center items-center min-h-screen">
-            <div className="w-full max-w-sm p-4 border-1 border-green-600 rounded-2xl">
+        <div data-aos="fade-up" className="text-white flex justify-center items-center min-h-screen">
+            <div  className="w-full max-w-sm p-4 border-1 border-green-600 rounded-2xl">
                 <h1 className="text-4xl font-bold mb-1">Welcome Back</h1>
                 <p className="text-[18px] text-white mb-2 font-medium ">Login with ZapShift</p>
 

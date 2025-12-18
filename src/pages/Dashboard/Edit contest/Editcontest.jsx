@@ -64,12 +64,12 @@ const EditContest = () => {
     if (!contest) return <p className="text-center text-white">Contest not found!</p>;
 
     return (
-        <div className="max-w-3xl mx-auto my-12 p-8 bg-[#0C1A4A] text-white rounded-2xl shadow-2xl">
-            <h2 className="text-3xl font-extrabold mb-6 text-yellow-400">
+        <div data-aos="fade-up" className="max-w-3xl mx-auto my-12 p-8 bg-[#0C1A4A] text-white rounded-2xl shadow-2xl">
+            <h2 data-aos="fade-up" className="text-3xl font-extrabold mb-6 text-yellow-400">
                 Edit Contest
             </h2>
 
-            <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+            <form data-aos="fade-up" className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
                 {/* Contest Name */}
                 <div>
                     <label className="block mb-2 text-gray-300">Contest Name</label>

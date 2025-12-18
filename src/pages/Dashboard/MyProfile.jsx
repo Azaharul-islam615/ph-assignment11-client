@@ -97,18 +97,18 @@ const MyProfile = () => {
     const COLORS = ["#4ade80", "#f87171"]; // green for won, red for lost
 
     return (
-        <div className=" min-h-screen bg-[#050E3C] text-white flex flex-col items-center py-12 px-4">
-            <div className="max-w-3xl w-full bg-[#0C1A4A] p-8 rounded-2xl shadow-2xl">
+        <div data-aos="fade-up" className=" min-h-screen bg-[#050E3C] text-white flex flex-col items-center py-12 px-4">
+            <div data-aos="fade-up" className="max-w-3xl w-full bg-[#0C1A4A] p-8 rounded-2xl shadow-2xl">
                 <h1 className="text-3xl font-bold mb-6">My Profile</h1>
 
                 
-                <div className="flex items-center gap-6 mb-8">
-                    <img
+                <div data-aos="fade-up" className="flex items-center gap-6 mb-8">
+                    <img data-aos="fade-up"
                         src={profile.photoURL}
                         alt={profile.displayName}
                         className="w-24 h-24 rounded-full object-cover border-4 border-indigo-500"
                     />
-                    <div>
+                    <div data-aos="fade-up">
                         <h2 className="text-xl font-bold">{profile.displayName}</h2>
                         <p className="text-gray-300">{profile.bio}</p>
                         <p className="text-gray-400 text-sm">{profile.email}</p>
@@ -116,7 +116,7 @@ const MyProfile = () => {
                 </div>
 
                 {/* Update Form */}
-                <div className="mb-10">
+                <div data-aos="fade-up" className="mb-10">
                     <h2 className="text-2xl font-bold mb-4">Update Info</h2>
                     <form onSubmit={handledUpdate} className="flex flex-col gap-4">
                         <input
@@ -148,7 +148,7 @@ const MyProfile = () => {
 
                 {/* Win Percentage Chart */}
                 <div >
-                    <h2 className="text-2xl font-bold mb-4">Win Percentage</h2>
+                    <h2 data-aos="fade-up" className="text-2xl font-bold mb-4">Win Percentage</h2>
                     <PieChart width={300} height={300}>
                         <Pie
                             data={data}

@@ -23,13 +23,13 @@ const MyParticipatedContests = () => {
     );
 
     return (
-        <div className="p-6">
-            <h2 className="text-3xl font-bold mb-6">
+        <div data-aos="fade-up" className="p-6">
+            <h2 data-aos="fade-up" className="text-3xl font-bold mb-6">
                 My Participated Contests
             </h2>
 
-            <div className="overflow-x-auto">
-                <table className="table table-zebra w-full">
+            <div data-aos="fade-up" className="overflow-x-auto">
+                <table data-aos="fade-up" className="table table-zebra w-full">
                     <thead className="bg-gray-200">
                         <tr>
                             <th>#</th>

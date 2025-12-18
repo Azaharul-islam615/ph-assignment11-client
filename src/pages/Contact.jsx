@@ -4,11 +4,11 @@ import { AuthContext } from "../Context/Authprovider";
 const Contact = () => {
     const {toggle}=use(AuthContext)
     return (
-        <section className={` ${toggle ? ' text-white' : 'bg-white text-black ' } py-16`}>
-            <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12">
+        <section data-aos="fade-up" className={` ${toggle ? ' text-white' : 'bg-white text-black ' } py-16`}>
+            <div data-aos="fade-up" className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12">
 
                 {/* Left Side – Info */}
-                <div className="space-y-6">
+                <div data-aos="fade-up" className="space-y-6">
                     <h2 className={`text-4xl ${toggle ? 'text-gray-300 ' : ' text-black'} font-extrabold`}>📞 Contact Us</h2>
                     <p className={`${toggle ? 'text-gray-300 ' : ' text-black'} text-lg`}>
                         Have any questions, feedback, or want to get in touch?
@@ -16,7 +16,7 @@ const Contact = () => {
                         Reach out to us anytime — our support team is active 24/7.
                     </p>
 
-                    <div className="space-y-4 mt-6">
+                    <div data-aos="fade-up" className="space-y-4 mt-6">
                         <div>
                             <h3 className="text-xl font-semibold text-indigo-400">📍 Office Address</h3>
                             <p className={`${toggle ? 'text-gray-300 ' : ' text-black'}`}>Dhaka, Bangladesh</p>
@@ -35,7 +35,7 @@ const Contact = () => {
                 </div>
 
                 {/* Right Side – Contact Form */}
-                <div className="bg-[#0C1A4A] p-8 rounded-2xl shadow-xl">
+                <div data-aos="fade-up" className="bg-[#0C1A4A] p-8 rounded-2xl shadow-xl">
                     <h3 className={`text-2xl ${toggle ? 'text-white ' : ' text-white'} font-bold mb-6`}>Send Us a Message</h3>
 
                     <form className="space-y-5">

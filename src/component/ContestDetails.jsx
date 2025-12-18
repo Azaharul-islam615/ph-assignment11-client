@@ -93,43 +93,43 @@ const ContestDetails = () => {
     };
 
     return (
-        <div className=" text-white min-h-screen py-12">
-            <div className="max-w-5xl mx-auto px-4">
-                <h1 className="text-4xl font-extrabold mb-4">{contest?.name}</h1>
-                <img src={contest?.image} className="w-full h-72 object-cover rounded-xl shadow-lg" alt="Contest Banner" />
+        <div data-aos="fade-up" className=" text-white min-h-screen py-12">
+            <div data-aos="fade-up" className="max-w-5xl mx-auto px-4">
+                <h1 data-aos="fade-up" className="text-4xl font-extrabold mb-4">{contest?.name}</h1>
+                <img data-aos="fade-up" src={contest?.image} className="w-full h-72 object-cover rounded-xl shadow-lg" alt="Contest Banner" />
 
                 {/* Stats */}
-                <div className="mt-6 bg-[#0C1A4A] p-6 rounded-xl grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                    <div>
-                        <p className="text-gray-300">Participants</p>
-                        <h2 className="text-3xl font-bold">{contest?.participants}</h2>
+                <div data-aos="fade-up"  className="mt-6 bg-[#0C1A4A] p-6 rounded-xl grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div > 
+                        <p data-aos="fade-up" className="text-gray-300">Participants</p>
+                        <h2 data-aos="fade-up" className="text-3xl font-bold">{contest?.participants}</h2>
                     </div>
-                    <div>
-                        <p className="text-gray-300">Prize Money</p>
-                        <h2 className="text-3xl font-bold text-indigo-400">{contest?.prize}</h2>
+                    <div > 
+                        <p data-aos="fade-up" className="text-gray-300">Prize Money</p>
+                        <h2 data-aos="fade-up" className="text-3xl font-bold text-indigo-400">{contest?.prize}</h2>
                     </div>
-                    <div>
-                        <p className="text-gray-300">Deadline</p>
+                    <div> 
+                        <p data-aos="fade-up" className="text-gray-300">Deadline</p>
                         {timeLeft ? (
-                            <h2 className="text-xl font-bold text-red-400">
+                            <h2 data-aos="fade-up" className="text-xl font-bold text-red-400">
                                 {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
                             </h2>
                         ) : (
-                            <h2 className="text-2xl font-bold text-red-600">Contest Ended</h2>
+                                <h2 data-aos="fade-up" className="text-2xl font-bold text-red-600">Contest Ended</h2>
                         )}
                     </div>
                 </div>
 
                 {/* Buttons */}
-                <div className="mt-8 flex flex-col md:flex-row gap-4">
-                    <button onClick={() => handled(contest)}
+                <div data-aos="fade-up" className="mt-8 flex flex-col md:flex-row gap-4">
+                    <button data-aos="fade-up" onClick={() => handled(contest)}
                         disabled={isContestEnded}
                         className={`px-6 py-3 rounded-xl font-bold ${isContestEnded ? "bg-gray-500 cursor-not-allowed" : "bg-indigo-600 hover:bg-indigo-700"}`}
                     >
                         {isContestEnded ? "Contest Ended" : "Register / Pay"}
                     </button>
 
-                    <button
+                    <button data-aos="fade-up"
                         disabled={isContestEnded}
                         onClick={() => setOpenModal(true)}
                         className={`px-6 py-3 rounded-xl font-bold ${isContestEnded ? "bg-gray-500 cursor-not-allowed" : "bg-green-600 hover:bg-green-700"}`}
@@ -139,22 +139,22 @@ const ContestDetails = () => {
                 </div>
 
                 {/* Description */}
-                <div className="mt-10 bg-[#0C1A4A] p-6 rounded-xl">
-                    <h2 className="text-2xl font-bold mb-3">📝 Contest Description</h2>
-                    <p className="text-gray-300 leading-7">{contest?.description}</p>
+                <div data-aos="fade-up" className="mt-10 bg-[#0C1A4A] p-6 rounded-xl">
+                    <h2 data-aos="fade-up" className="text-2xl font-bold mb-3">📝 Contest Description</h2>
+                    <p data-aos="fade-up" className="text-gray-300 leading-7">{contest?.description}</p>
 
-                    <h2 className="text-2xl font-bold mt-6 mb-3">📌 Task Details</h2>
-                    <p className="text-gray-300 leading-7">{contest?.taskInstruction}</p>
+                    <h2 data-aos="fade-up" className="text-2xl font-bold mt-6 mb-3">📌 Task Details</h2>
+                    <p data-aos="fade-up" className="text-gray-300 leading-7">{contest?.taskInstruction}</p>
                 </div>
             </div>
 
             {/* Modal for Submit Task */}
             {openModal && !isContestEnded && (
-                <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center px-4">
-                    <div className="bg-[#0C1A4A] p-6 rounded-xl max-w-lg w-full">
-                        <h2 className="text-2xl font-bold mb-3">Submit Your Task</h2>
+                <div data-aos="fade-up" className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center px-4">
+                    <div data-aos="fade-up" className="bg-[#0C1A4A] p-6 rounded-xl max-w-lg w-full">
+                        <h2 data-aos="fade-up" className="text-2xl font-bold mb-3">Submit Your Task</h2>
 
-                        <textarea
+                        <textarea data-aos="fade-up"
                             rows="5"
                             placeholder="Paste your link here..."
                             value={taskLink}
@@ -162,14 +162,14 @@ const ContestDetails = () => {
                             className="w-full p-3 rounded-lg text-white bg-[#1F2A63] outline-none"
                         />
 
-                        <div className="flex justify-end mt-4 gap-3">
-                            <button
+                        <div data-aos="fade-up" className="flex justify-end mt-4 gap-3">
+                            <button data-aos="fade-up"
                                 className="px-5 py-2 bg-gray-500 rounded-lg"
                                 onClick={() => setOpenModal(false)}
                             >
                                 Cancel
                             </button>
-                            <button
+                            <button data-aos="fade-up"
                                 className="px-5 py-2 bg-green-600 hover:bg-green-700 rounded-lg"
                                 onClick={submitTask}
                             >

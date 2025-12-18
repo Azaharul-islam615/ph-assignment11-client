@@ -113,7 +113,7 @@ const Register = () => {
     }
 
     return (
-        <div className="text-white flex justify-center items-center min-h-screen ">
+        <div data-aos="fade-up" className="text-white flex justify-center items-center min-h-screen ">
             <div className="w-full max-w-sm p-4 border-1 border-green-500 rounded-2xl mt-4 ">
                 <h1 className="text-4xl font-bold mb-1">Create Account</h1>
                 <p className="text-[16px] text-gray-300 mb-2">Register with ZapShift</p>

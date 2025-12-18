@@ -10,8 +10,8 @@ const Footer = () => {
     ];
 
     return (
-        <footer className="bg-black text-white py-10">
-            <div className="max-w-6xl mx-auto px-4 flex flex-col items-center space-y-6">
+        <footer data-aos="fade-up" className="bg-black text-white py-10">
+            <div  className="max-w-6xl mx-auto px-4 flex flex-col items-center space-y-6">
 
                 {/* Logo */}
                 <div className="flex flex-col items-center">

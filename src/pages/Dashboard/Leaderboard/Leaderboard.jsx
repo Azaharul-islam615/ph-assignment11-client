@@ -40,22 +40,22 @@ const Leaderboard = () => {
         .sort((a, b) => b.wins - a.wins);
 
     return (
-        <div className="min-h-screen bg-[#050E3C] text-white py-12 px-4">
-            <div className="max-w-4xl mx-auto bg-[#0C1A4A] p-4 md:p-8 rounded-xl shadow-lg overflow-x-auto">
-                <h1 className="text-3xl md:text-4xl font-bold mb-6 text-center">Leaderboard</h1>
+        <div data-aos="fade-up" className="min-h-screen bg-[#050E3C] text-white py-12 px-4">
+            <div data-aos="fade-up" className="max-w-4xl mx-auto bg-[#0C1A4A] p-4 md:p-8 rounded-xl shadow-lg overflow-x-auto">
+                <h1 data-aos="fade-up" className="text-3xl md:text-4xl font-bold mb-6 text-center">Leaderboard</h1>
 
-                <table className="w-full text-left border-collapse min-w-[600px]">
+                <table data-aos="fade-up" className="w-full text-left border-collapse min-w-[600px]">
                     <thead>
-                        <tr className="border-b border-gray-600">
-                            <th className="py-2 px-4 text-sm md:text-base">Rank</th>
+                        <tr data-aos="fade-up" className="border-b border-gray-600">
+                            <th  className="py-2 px-4 text-sm md:text-base">Rank</th>
                             <th className="py-2 px-4 text-sm md:text-base">User</th>
                             <th className="py-2 px-4 text-sm md:text-base">Name</th>
                             <th className="py-2 px-4 text-sm md:text-base">Wins</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody> 
                         {leaderboard.map((user, index) => (
-                            <tr
+                            <tr 
                                 key={user.email}
                                 className={`${index % 2 === 0 ? "bg-[#1F2A63]" : "bg-[#162151]"}`}
                             >

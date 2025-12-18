@@ -64,10 +64,10 @@ const axiosSecure=UseaxiosSecure()
   
 
     return (
-        <div className="max-w-3xl mx-auto my-12 p-8 bg-[#0C1A4A] text-white rounded-2xl shadow-2xl">
-            <h2 className="text-3xl font-extrabold mb-6 text-green-400">Add New Contest</h2>
+        <div data-aos="fade-up" className="max-w-3xl mx-auto my-12 p-8 bg-[#0C1A4A] text-white rounded-2xl shadow-2xl">
+            <h2 data-aos="fade-up" className="text-3xl font-extrabold mb-6 text-green-400">Add New Contest</h2>
 
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            <form data-aos="fade-up" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div>
                     <label className="block mb-2 font-medium text-gray-300">Creator Email</label>
                     <input

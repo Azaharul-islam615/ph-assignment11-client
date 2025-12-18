@@ -34,7 +34,17 @@ import ManageUsers from './pages/Dashboard/Manage Users/ManageUsers.jsx'
 import AdminRoute from './component/AdminRoute.jsx'
 import CreatorRoute from './component/CreatorRoute.jsx'
 import Leaderboard from './pages/Dashboard/Leaderboard/Leaderboard.jsx'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+
+AOS.init({
+  duration: 800,
+  once: false,
+  offset: 300,
+});
 const queryClient = new QueryClient();
+
 
 const router = createBrowserRouter([
   {

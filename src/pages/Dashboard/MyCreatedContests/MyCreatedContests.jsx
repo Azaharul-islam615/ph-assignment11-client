@@ -38,8 +38,8 @@ const MyCreatedContests = () => {
    
 
     return (
-        <div className="max-w-6xl mx-auto my-10 p-6 bg-[#0C1A4A] text-white rounded-2xl shadow-2xl">
-            <h2 className="text-3xl font-bold mb-6 text-green-400">My Created Contests</h2>
+        <div data-aos="fade-up" className="max-w-6xl mx-auto my-10 p-6 bg-[#0C1A4A] text-white rounded-2xl shadow-2xl">
+            <h2 data-aos="fade-up" className="text-3xl font-bold mb-6 text-green-400">My Created Contests</h2>
             
 
             <div className="overflow-x-auto">

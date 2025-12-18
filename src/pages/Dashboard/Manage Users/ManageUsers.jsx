@@ -69,9 +69,9 @@ const ManageUsers = () => {
 
    
     return (
-        <div className="p-6">
-            <h2 className="text-2xl font-semibold mb-4">Manage Users</h2>
-            <p className="text-gray-500 mb-6">See all users & change roles</p>
+        <div data-aos="fade-up" className="p-6">
+            <h2 data-aos="fade-up" className="text-2xl font-semibold mb-4">Manage Users</h2>
+            <p data-aos="fade-up" className="text-gray-500 mb-6">See all users & change roles</p>
 
 
             <div className="overflow-x-auto bg-white shadow rounded-2xl">
