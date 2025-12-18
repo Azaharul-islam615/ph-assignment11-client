@@ -1,8 +1,10 @@
 import {React,use} from 'react';
 import UseAxiosSecure from "../hooks/UseAxiosSecure";
 import { useQuery } from '@tanstack/react-query';
+import { AuthContext } from '../Context/Authprovider';
 
 const WinnerAdvertisement = () => {
+    const {toggle}=use(AuthContext)
     
     const axiosSecure = UseAxiosSecure()
     const { refetch, data: payments = [] } = useQuery({
@@ -20,14 +22,14 @@ const WinnerAdvertisement = () => {
     const winnerCount = payments.filter(payment => payment.isWinner).length;
 
     return (
-        <section className="bg-[#050E3C] py-16 text-white">
+        <section className={` ${toggle ? 'bg-[#050E3C]' : 'bg-white text-black'} py-16 text-white`}>
             <div className="max-w-6xl mx-auto px-4 text-center">
 
                 {/* Section Title */}
-                <h2 className="text-4xl font-bold text-white mb-4">
+                <h2 className={`text-4xl font-bold ${toggle ? 'text-white' : 'text-black'} mb-4`}>
                     Recent Winners
                 </h2>
-                <p className=" mb-12 text-gray-300 text-[18px] mx-auto">
+                <p className={`mb-12  ${toggle ?'text-gray-300':'text-black'} text-[18px] mx-auto`}>
                     Our talented participants are achieving great things every day! <br />
                     Check out some of our recent winners and get <br /> inspired to join the next contest.
                 </p>

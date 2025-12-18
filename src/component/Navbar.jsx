@@ -1,4 +1,4 @@
-import React, { use, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import img1 from "../assets/ChatGPT Image ৯ ডিসে, ২০২৫, ০১_৩৯_৫২ PM.png";
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../Context/Authprovider';
@@ -6,6 +6,7 @@ import { AuthContext } from '../Context/Authprovider';
 const Navbar = () => {
     const { user, logout } = use(AuthContext);
     const [openProfile, setOpenProfile] = useState(false);
+    const {setToggle}=use(AuthContext)
 
     const handleLogout = () => {
         logout()
@@ -28,6 +29,20 @@ const Navbar = () => {
             )}
         </>
     );
+    useEffect(() => {
+        const savedToggle = localStorage.getItem('toggle');
+        if (savedToggle) {
+            setToggle(savedToggle === 'true');
+        }
+    }, []);
+
+    const handleTheme = () => {
+        setToggle(prev => {
+            const newToggle = !prev;
+            localStorage.setItem('toggle', newToggle);
+            return newToggle;
+        });
+    };
 
     return (
         <div className="bg-[#050E3C]">
@@ -67,6 +82,7 @@ const Navbar = () => {
 
                 {/* RIGHT */}
                 <div className="navbar-end flex items-center gap-2">
+                    <input onClick={handleTheme} type="checkbox" defaultChecked className="mr-2 toggle toggle-warning" />
                     {!user ? (
                         <>
                             <Link

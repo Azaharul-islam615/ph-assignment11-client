@@ -1,8 +1,10 @@
-import React from "react";
+import React, { use } from "react";
+import { AuthContext } from "../Context/Authprovider";
 
 const ExtraSectionTwo = () => {
+    const {toggle}=use(AuthContext)
     return (
-        <section className="bg-[#050E3C] py-16 text-white">
+        <section className={` ${toggle ? 'bg - [#050E3C]':'bg-white text-black'} py-16 text-white`}>
             <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
 
                 {/* Illustration */}
@@ -20,10 +22,10 @@ const ExtraSectionTwo = () => {
                     <h2 className="text-4xl font-extrabold text-white">
                         Showcase Your Talent
                     </h2>
-                    <p className="text-gray-300">
+                    <p className={`${toggle ? 'text-gray-300' : 'text-black'}`}>
                         Participate in contests, submit your work, and get recognized by top creators. Whether you are a designer, writer, or photographer, ContestHub gives you the platform to shine.
                     </p>
-                    <ul className="text-gray-300 list-disc list-inside space-y-2">
+                    <ul className={`${toggle ? 'text-gray-300' : 'text-black'} list-disc list-inside space-y-2`}>
                         <li>Easy-to-join contests</li>
                         <li>Track your submissions and winnings</li>
                         <li>Connect with other creative minds</li>

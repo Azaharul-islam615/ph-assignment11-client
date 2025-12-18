@@ -1,9 +1,11 @@
-import React from "react";
+import React, { use } from "react";
 import { Link } from "react-router";
+import { AuthContext } from "../Context/Authprovider";
 
 const About = () => {
+    const {toggle}=use(AuthContext)
     return (
-        <section className=" text-white py-16">
+        <section className={`${toggle ? ' text-white' : 'bg-white text-black'}  py-16`}>
             <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
 
                 {/* Image */}
@@ -20,12 +22,12 @@ const About = () => {
                     <h2 className="text-4xl font-extrabold text-white">
                         About ContestHub
                     </h2>
-                    <p className="text-gray-300 text-lg">
+                    <p className={`${toggle ? 'text-gray-300 ' : ' text-black' } text-lg`}>
                         ContestHub is a modern platform that empowers creators and participants
                         to showcase their talents in various competitions. We aim to connect
                         creative minds with exciting opportunities and rewarding experiences.
                     </p>
-                    <ul className="list-disc list-inside text-gray-300 space-y-2">
+                    <ul className={`list-disc list-inside ${toggle ? 'text-gray-300 ' : ' text-black' } space-y-2`}>
                         <li>Participate in a wide range of contests</li>
                         <li>Track your submissions and achievements</li>
                         <li>Get recognized by top creators</li>

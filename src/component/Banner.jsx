@@ -3,7 +3,7 @@ import bannerImg from "../assets/ChatGPT Image ৯ ডিসে, ২০২৫, �
 
 const Banner = () => {
     return (
-        <div className="relative w-full h-[70vh] md:h-[80vh] bg-[#050E3C] overflow-hidden">
+        <div className="relative w-full h-[70vh] md:h-[80vh]  overflow-hidden">
 
             {/* Background Image */}
             <img

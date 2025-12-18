@@ -1,16 +1,18 @@
-import React from "react";
+import React, { use } from "react";
 import { Link } from "react-router";
+import { AuthContext } from "../Context/Authprovider";
 
 const ExtraSection = () => {
+    const {toggle}=use(AuthContext)
     return (
-        <section className="bg-indigo-50 py-16">
+        <section className={`${toggle ?   'bg-white text-black':'bg - indigo - 50'}  py-16`}>
             <div className="max-w-6xl mx-auto px-4 text-center">
 
                 {/* Section Title */}
                 <h2 className="text-4xl font-extrabold text-indigo-600 mb-4">
                     Why Join ContestHub?
                 </h2>
-                <p className="text-gray-600 mb-12 max-w-3xl mx-auto">
+                <p className={`${toggle ? 'text-gray-600' : 'text-gray-300'} mb-12 max-w-3xl mx-auto`}>
                     ContestHub is the perfect place to showcase your creativity, learn new skills, and win exciting prizes. Join contests, challenge yourself, and become part of our growing community of talented participants.
                 </p>
 

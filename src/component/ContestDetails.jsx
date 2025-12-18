@@ -93,7 +93,7 @@ const ContestDetails = () => {
     };
 
     return (
-        <div className="bg-[#050E3C] text-white min-h-screen py-12">
+        <div className=" text-white min-h-screen py-12">
             <div className="max-w-5xl mx-auto px-4">
                 <h1 className="text-4xl font-extrabold mb-4">{contest?.name}</h1>
                 <img src={contest?.image} className="w-full h-72 object-cover rounded-xl shadow-lg" alt="Contest Banner" />

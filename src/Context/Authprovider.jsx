@@ -10,6 +10,7 @@ const Authprovider = ({ children }) => {
     const [id,setId]=useState(null)
     const [loading, setloading] = useState(true)
     const [user, setUser] = useState(null)
+    const [toggle, setToggle] = useState(null)
     
 
     const createUser = (email, password) => {
@@ -53,6 +54,7 @@ const Authprovider = ({ children }) => {
         loading,
         googleauth,
         updateuserprofile,
+        toggle,setToggle
       
       
 

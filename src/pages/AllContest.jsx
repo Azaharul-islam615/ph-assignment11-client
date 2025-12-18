@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import UseaxiosSecure from "../hooks/UseaxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router";
+import { AuthContext } from "../Context/Authprovider";
 
 const AllContests = () => {
+    const {toggle}=use(AuthContext)
     const [activeTab, setActiveTab] = useState("All");
     const axiosSecure = UseaxiosSecure()
     const { data: contests = [] } = useQuery({
@@ -25,12 +27,12 @@ const AllContests = () => {
             : contests.filter((contest) => contest.type === activeTab);
 
     return (
-        <div className="w-11/12 mx-auto py-12">
+        <div className={` ${toggle ===false && 'bg-white text-black' } w-11/12 mx-auto py-12`}>
 
             {/* Section Title */}
             <div className="text-center mb-12">
-                <h2 className="text-4xl font-bold text-white">🎯 All Contests</h2>
-                <p className="text-gray-300 text-[18px] mt-2">
+                <h2 className={` ${toggle ? 'text-white ' : ' text-black' } text-4xl font-bold `}>🎯 All Contests</h2>
+                <p className={`${toggle ? 'text-gray-300 ' : ' text-black' } text-[18px] mt-2`}>
                     Browse all admin-approved contests by type and join the one that suits your creativity best!
                 </p>
             </div>
