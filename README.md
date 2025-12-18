@@ -1,16 +1,25 @@
-# React + Vite
+# ContestHub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live Site URL:** [https://your-live-site-url.com](https://your-live-site-url.com)
 
-Currently, two official plugins are available:
+##  ওয়েবসাইটের বিবরণ
+ContestHub হলো একটি কনটেস্ট ম্যানেজমেন্ট প্ল্যাটফর্ম যেখানে ব্যবহারকারীরা বিভিন্ন ধরনের কনটেস্টে অংশগ্রহণ করতে পারে
+ কনটেস্ট তৈরি করতে পারে এবং বিজয়ীদের ঘোষণা করতে পারে। এখানে ব্যবহারকারীদের জন্য বিভিন্ন 
+রোল এবং ফিচার আছে যা তাদের অভিজ্ঞতাকে আরও উন্নত করে।  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ⭐ ওয়েবসাইটের ফিচারসমূহ
+- ব্যবহারকারী নিবন্ধন এবং লগইন (Firebase Authentication)
+- আলাদা রোল: Admin, Contest Creator, Normal User
+- Admin কনটেস্ট অনুমোদন / বাতিল এবং ব্যবহারকারীর রোল পরিবর্তন করতে পারে
+- Contest Creator নতুন কনটেস্ট তৈরি এবং সম্পাদনা করতে পারে
+- ব্যবহারকারী কনটেস্টে অংশগ্রহণ এবং পেমেন্টের মাধ্যমে নিবন্ধিত হতে পারে
+- লাইভ কনটেস্টের জন্য ডেডলাইন কাউন্টডাউন
+- পেমেন্ট ইন্টিগ্রেশন (Stripe)
+- অংশগ্রহণকারীরা কনটেস্টের টাস্ক সাবমিট করতে পারে
+- বিজয়ীদের নাম এবং ফটো কনটেস্ট শেষ হওয়ার পর দেখানো হয়
+- রিয়েল-টাইম লিডারবোর্ড
+- ডিজাইন, কোডিং, লেখা ইত্যাদির জন্য সার্চ এবং ফিল্টার ফিচার
+- রেসপনসিভ ডিজাইন TailwindCSS ব্যবহার করে
+- আকর্ষণীয় অ্যানিমেশন এবং চার্ট দেখানোর জন্য AOS এবং Recharts ব্যবহার
 
-## React Compiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
