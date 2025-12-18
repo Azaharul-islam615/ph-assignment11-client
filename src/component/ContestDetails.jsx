@@ -24,7 +24,7 @@ const ContestDetails = () => {
 
     const { id } = useParams();
     const {user}=use(AuthContext)
-    console.log(user)
+    
     const axiosSecure = UseaxiosSecure();
 
     const { data: contest } = useQuery({
@@ -34,6 +34,16 @@ const ContestDetails = () => {
             return res.data;
         },
     });
+
+    const { data: winners = [] } = useQuery({
+        queryKey: ["public-winners"],
+        queryFn: async () => {
+            const res = await axiosSecure.get("/public-winners");
+            return res.data;
+        },
+    });
+
+    const winner = winners.find(w => w.contestId === id)
 
     useEffect(() => {
         if (!contest?.deadline) return;
@@ -129,13 +139,15 @@ const ContestDetails = () => {
                         {isContestEnded ? "Contest Ended" : "Register / Pay"}
                     </button>
 
-                    <button data-aos="fade-up"
-                        disabled={isContestEnded}
-                        onClick={() => setOpenModal(true)}
-                        className={`px-6 py-3 rounded-xl font-bold ${isContestEnded ? "bg-gray-500 cursor-not-allowed" : "bg-green-600 hover:bg-green-700"}`}
-                    >
-                        Submit Task
-                    </button>
+                    {
+                        winner?.paymentStatus === 'paid' && <button data-aos="fade-up"
+                            disabled={isContestEnded}
+                            onClick={() => setOpenModal(true)}
+                            className={`px-6 py-3 rounded-xl font-bold ${isContestEnded ? "bg-gray-500 cursor-not-allowed" : "bg-green-600 hover:bg-green-700"}`}
+                        >
+                            Submit Task
+                        </button>
+                    }
                 </div>
 
                 {/* Description */}
@@ -179,6 +191,41 @@ const ContestDetails = () => {
                     </div>
                 </div>
             )}
+
+            {/* 🏆 Winner Section (Static Design) */}
+           {
+                winner && <div data-aos="fade-up" className=" md:w-[1000px] mx-auto mt-10 bg-[#0C1A4A] p-6 rounded-xl">
+                    <h2 className="text-2xl  font-bold mb-4 text-yellow-400 flex items-center gap-2">
+                        🏆 Contest Winner
+                    </h2>
+
+                    <div className="flex flex-col md:flex-row items-center gap-6">
+                        {/* Winner Image */}
+                        <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-yellow-400 shadow-lg">
+                            <img
+                                src={winner.image}
+                                alt="Winner"
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+
+                        {/* Winner Info */}
+                        <div className="text-center md:text-left">
+                            <h3 className="text-2xl font-bold text-white">
+                                {winner?.userName}
+                            </h3>
+                            <p className="text-gray-300 mt-1">
+                                Winner of <span className="text-indigo-400 font-semibold">{winner?.userName}</span>
+                            </p>
+
+                            <p className="mt-2 text-green-400 font-semibold">
+                                🎉 Prize Won: ${winner?.prizeMoney}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+           }
+
         </div>
     );
 };

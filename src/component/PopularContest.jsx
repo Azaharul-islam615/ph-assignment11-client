@@ -15,7 +15,7 @@ const PopularContests = () => {
     
    
     return (
-        <div data-aos="fade-up" className="w-11/12 mx-auto py-12">
+        <div data-aos="fade-up" className="w-11/12 mx-auto py-12 ">
 
             {/* Section Title */}
             <div data-aos="fade-up" className="text-center mb-16">
