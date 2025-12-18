@@ -8,7 +8,7 @@ const PopularContests = () => {
     const { data: contests = [], refetch } = useQuery({
         queryKey: ['contest', 'pending'],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/contest`)
+            const res = await axiosSecure.get(`/popular`)
             return res.data
         }
     })
