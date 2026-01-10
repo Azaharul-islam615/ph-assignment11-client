@@ -3,9 +3,9 @@ import { Link } from "react-router";
 import { AuthContext } from "../Context/Authprovider";
 
 const ExtraSection = () => {
-    const {toggle}=use(AuthContext)
+    const { toggle } = use(AuthContext)
     return (
-        <section data-aos="fade-up" className={`${toggle ?   'bg-white text-black':'bg - indigo - 50'}  py-16`}>
+        <section data-aos="fade-up" className={`${toggle ? 'bg-white text-black' : 'bg - indigo - 50'}  py-16`}>
             <div className="max-w-6xl mx-auto px-4 text-center">
 
                 {/* Section Title */}
@@ -17,24 +17,24 @@ const ExtraSection = () => {
                 </p>
 
                 {/* Features Grid */}
-                <div data-aos="fade-up" className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-                    <div data-aos="fade-up" className="bg-white rounded-xl shadow-lg p-6">
-                        <h3 data-aos="fade-up" className="text-xl font-bold text-indigo-600 mb-2">Creative Contests</h3>
-                        <p data-aos="fade-up" className="text-gray-600">
+                    <div className="bg-white rounded-xl shadow-lg p-6">
+                        <h3 className="text-xl font-bold text-indigo-600 mb-2">Creative Contests</h3>
+                        <p className="text-gray-600">
                             Participate in a variety of contests including design, writing, photography, and more.
                         </p>
                     </div>
 
-                    <div data-aos="fade-up" className="bg-white rounded-xl shadow-lg p-6">
-                        <h3  className="text-xl font-bold text-indigo-600 mb-2">Win Exciting Prizes</h3>
-                        <p  className="text-gray-600">
+                    <div className="bg-white rounded-xl shadow-lg p-6">
+                        <h3 className="text-xl font-bold text-indigo-600 mb-2">Win Exciting Prizes</h3>
+                        <p className="text-gray-600">
                             Earn recognition and win cash prizes or rewards for your creativity and skill.
                         </p>
                     </div>
 
-                    <div data-aos="fade-up" className="bg-white rounded-xl shadow-lg p-6">
-                        <h3  className="text-xl font-bold text-indigo-600 mb-2">Connect & Learn</h3>
+                    <div className="bg-white rounded-xl shadow-lg p-6">
+                        <h3 className="text-xl font-bold text-indigo-600 mb-2">Connect & Learn</h3>
                         <p className="text-gray-600">
                             Network with other creative minds and learn from top participants and winners.
                         </p>

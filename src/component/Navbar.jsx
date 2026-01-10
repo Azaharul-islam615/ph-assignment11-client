@@ -6,7 +6,7 @@ import { AuthContext } from '../Context/Authprovider';
 const Navbar = () => {
     const { user, logout } = use(AuthContext);
     const [openProfile, setOpenProfile] = useState(false);
-    const {setToggle}=use(AuthContext)
+    const { setToggle } = use(AuthContext)
 
     const handleLogout = () => {
         logout()
@@ -45,7 +45,7 @@ const Navbar = () => {
     };
 
     return (
-        <div className="bg-[#050E3C]">
+        <div className="bg-[#050E3C] fixed top-0 z-10 w-full ">
             <div className="navbar text-white shadow-sm">
                 {/* LEFT */}
                 <div className="navbar-start">
@@ -63,13 +63,11 @@ const Navbar = () => {
                         >
                             {links}
                         </ul>
-                       
-                    
                     </div>
 
                     <div className="flex items-center">
                         <img
-                            className="hidden md:block md:w-[70px] md:h-[70px] rounded-full"
+                            className="hidden md:block md:w-[60px] md:h-[60px] rounded-full"
                             src={img1}
                             alt=""
                         />

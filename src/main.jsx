@@ -66,12 +66,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/contact',
-        element:<Privetroutes><Contact></Contact></Privetroutes>
-       
+        element: <Privetroutes><Contact></Contact></Privetroutes>
+
       },
       {
         path: '/contestdetails/:id',
-        element:<Privetroutes><ContestDetails></ContestDetails></Privetroutes>
+        element: <Privetroutes><ContestDetails></ContestDetails></Privetroutes>
       },
       {
         path: '/login',
@@ -87,50 +87,62 @@ const router = createBrowserRouter([
       }
     ]
   },
-  {path:'/dashboard',
-    element:<Privetroutes><DashboardLayout></DashboardLayout></Privetroutes>,
-    children:[
+  {
+    path: '/dashboard',
+    element: <Privetroutes><DashboardLayout></DashboardLayout></Privetroutes>,
+    children: [
       {
-        path:'createContest',
+        path: 'createContest',
         element: <CreatorRoute><Mycontests></Mycontests></CreatorRoute>
 
       },
-      {path:'mycreatedcontest',
-        element:<CreatorRoute><MyParticipatedContests></MyParticipatedContests></CreatorRoute>
-      },
-      {path:'submittedTask',
-        element:<CreatorRoute><SubmittedTasks></SubmittedTasks></CreatorRoute>
-      },
-      {path:'editcontest/:id',
-        Component:EditContest
-      },
-      {path:'manageContest',
-        element:<AdminRoute><ManageContests></ManageContests></AdminRoute>
-      },
-      {path:'payment/:contestId',
-        Component:Payment
-      },
-      { path:'payment-success',
-        Component:PaymentSuccess
-      },
-      { path:'payment-cancelled',
-        Component:PaymentCancelled
-      },
-      {path:'mycontest',
-        Component:MyParticipatedContests
-      },
-      {path:'winning',
-        Component:MyWinningContests
+      {
+        path: 'mycreatedcontest',
+        element: <CreatorRoute><MyParticipatedContests></MyParticipatedContests></CreatorRoute>
       },
       {
-        path:'myProfile',
-        Component:MyProfile
+        path: 'submittedTask',
+        element: <CreatorRoute><SubmittedTasks></SubmittedTasks></CreatorRoute>
       },
-      {path:'manageUsers',
-        element:<AdminRoute><ManageUsers></ManageUsers></AdminRoute>
+      {
+        path: 'editcontest/:id',
+        Component: EditContest
       },
-      {path:'leaderboard',
-        Component:Leaderboard
+      {
+        path: 'manageContest',
+        element: <AdminRoute><ManageContests></ManageContests></AdminRoute>
+      },
+      {
+        path: 'payment/:contestId',
+        Component: Payment
+      },
+      {
+        path: 'payment-success',
+        Component: PaymentSuccess
+      },
+      {
+        path: 'payment-cancelled',
+        Component: PaymentCancelled
+      },
+      {
+        path: 'mycontest',
+        Component: MyParticipatedContests
+      },
+      {
+        path: 'winning',
+        Component: MyWinningContests
+      },
+      {
+        path: 'myProfile',
+        Component: MyProfile
+      },
+      {
+        path: 'manageUsers',
+        element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
+      },
+      {
+        path: 'leaderboard',
+        Component: Leaderboard
       }
 
     ]
@@ -144,6 +156,4 @@ createRoot(document.getElementById('root')).render(
       </StrictMode>,
     </Authprovider>
   </QueryClientProvider>
-
-
 )

@@ -23,8 +23,8 @@ const ContestDetails = () => {
     const [taskLink, setTaskLink] = useState("");
 
     const { id } = useParams();
-    const {user}=use(AuthContext)
-    
+    const { user } = use(AuthContext)
+
     const axiosSecure = UseaxiosSecure();
 
     const { data: contest } = useQuery({
@@ -59,12 +59,12 @@ const ContestDetails = () => {
         const paymentInfo = {
             price: contest.price,
             contestId: contest._id,
-            customer_email:user.email, 
+            customer_email: user.email,
             name: contest.name,
             prize: contest.prize,
             deadline: contest.deadline,
             userName: user.displayName,
-            image:user.photoURL
+            image: user.photoURL
         };
         const res = await axiosSecure.post('/create-checkout-session', paymentInfo);
         window.location.assign(res.data.url);
@@ -75,16 +75,16 @@ const ContestDetails = () => {
         if (!taskLink) return alert("Please submit a link");
 
         try {
-          
+
             const paymentsRes = await axiosSecure.get(`/payments?email=${user.email}`);
             const paymentRecord = paymentsRes.data.find(p => p.contestId === contest._id);
 
             if (!paymentRecord) return alert("Payment not found!");
 
-         
+
             await axiosSecure.patch(`/payments/${paymentRecord._id}`, {
                 submittedTask: taskLink,
-             
+
             });
 
             Swal.fire({
@@ -110,23 +110,23 @@ const ContestDetails = () => {
                 <img data-aos="fade-up" src={contest?.image} className="w-full h-72 object-cover rounded-xl shadow-lg" alt="Contest Banner" />
 
                 {/* Stats */}
-                <div data-aos="fade-up"  className="mt-6 bg-[#0C1A4A] p-6 rounded-xl grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                    <div > 
+                <div className="mt-6 bg-[#0C1A4A] p-6 rounded-xl grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div >
                         <p data-aos="fade-up" className="text-gray-300">Participants</p>
                         <h2 data-aos="fade-up" className="text-3xl font-bold">{contest?.participants}</h2>
                     </div>
-                    <div > 
+                    <div >
                         <p data-aos="fade-up" className="text-gray-300">Prize Money</p>
                         <h2 data-aos="fade-up" className="text-3xl font-bold text-indigo-400">{contest?.prize}</h2>
                     </div>
-                    <div> 
+                    <div>
                         <p data-aos="fade-up" className="text-gray-300">Deadline</p>
                         {timeLeft ? (
                             <h2 data-aos="fade-up" className="text-xl font-bold text-red-400">
                                 {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
                             </h2>
                         ) : (
-                                <h2 data-aos="fade-up" className="text-2xl font-bold text-red-600">Contest Ended</h2>
+                            <h2 data-aos="fade-up" className="text-2xl font-bold text-red-600">Contest Ended</h2>
                         )}
                     </div>
                 </div>
@@ -194,7 +194,7 @@ const ContestDetails = () => {
             )}
 
             {/* 🏆 Winner Section (Static Design) */}
-           {
+            {
                 winner && <div data-aos="fade-up" className=" md:w-[1000px] mx-auto mt-10 bg-[#0C1A4A] p-6 rounded-xl">
                     <h2 className="text-2xl  font-bold mb-4 text-yellow-400 flex items-center gap-2">
                         🏆 Contest Winner
@@ -225,7 +225,7 @@ const ContestDetails = () => {
                         </div>
                     </div>
                 </div>
-           }
+            }
 
         </div>
     );

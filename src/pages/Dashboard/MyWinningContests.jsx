@@ -11,7 +11,7 @@ import { AuthContext } from "../../Context/Authprovider";
 
 
 const MyWinningContests = () => {
-    const {user}=use(AuthContext)
+    const { user } = use(AuthContext)
     const axiosSecure = UseaxiosSecure()
     const { refetch, data: payments = [] } = useQuery({
 
@@ -21,7 +21,7 @@ const MyWinningContests = () => {
             return res.data
         }
     })
-    
+
     return (
         <div data-aos="fade-up" className="w-11/12 mx-auto py-10">
             <title>contestHub-mywinningcontest</title>
@@ -32,40 +32,40 @@ const MyWinningContests = () => {
             </h2>
 
             {/* Cards */}
-            <div data-aos="fade-up" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {payments
                     .filter(winner => winner.isWinner).map((contest) => (
-                    <div
-                        key={contest._id}
-                        className="bg-[#0C1A4A] text-white rounded-2xl p-6 shadow-lg hover:scale-[1.02] transition"
-                    >
-                        {/* Contest Name */}
-                        <h3 className="text-xl font-bold mb-2">
-                            {contest.contestName}
-                        </h3>
+                        <div
+                            key={contest._id}
+                            className="bg-[#0C1A4A] text-white rounded-2xl p-6 shadow-lg hover:scale-[1.02] transition"
+                        >
+                            {/* Contest Name */}
+                            <h3 className="text-xl font-bold mb-2">
+                                {contest.contestName}
+                            </h3>
 
-                       
 
-                        {/* Prize */}
-                        <div className="flex items-center gap-2 text-2xl font-bold text-green-400 mb-3">
-                            <FaDollarSign />
-                            {contest.prizeMoney.toLocaleString()} BDT
+
+                            {/* Prize */}
+                            <div className="flex items-center gap-2 text-2xl font-bold text-green-400 mb-3">
+                                <FaDollarSign />
+                                {contest.prizeMoney.toLocaleString()} BDT
+                            </div>
+
+                            {/* Position */}
+                            <div className="flex items-center gap-2 text-yellow-400 font-semibold mb-3">
+                                <FaMedal />
+                                {contest.isWinner && "Champion"}
+                            </div>
+
+
+                            {/* Date */}
+                            <div className="flex items-center gap-2 text-gray-300 text-sm">
+                                <FaCalendarAlt />
+                                Won on: {contest.winnerDeclaredAt}
+                            </div>
                         </div>
-
-                        {/* Position */}
-                        <div className="flex items-center gap-2 text-yellow-400 font-semibold mb-3">
-                            <FaMedal />
-                            {contest.isWinner && "Champion" }
-                        </div>
-
-
-                        {/* Date */}
-                        <div className="flex items-center gap-2 text-gray-300 text-sm">
-                            <FaCalendarAlt />
-                            Won on: {contest.winnerDeclaredAt}
-                        </div>
-                    </div>
-                ))}
+                    ))}
             </div>
 
             {/* Empty State (optional) */}
