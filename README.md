@@ -1,25 +1,55 @@
 # ContestHub
 
-**Live Site URL:** [https://your-live-site-url.com](https://your-live-site-url.com)
+**Live Site URL:** [https://fastidious-centaur-cc9cf4.netlify.app/](https://fastidious-centaur-cc9cf4.netlify.app/)
 
-##  ওয়েবসাইটের বিবরণ
-ContestHub হলো একটি কনটেস্ট ম্যানেজমেন্ট প্ল্যাটফর্ম যেখানে ব্যবহারকারীরা বিভিন্ন ধরনের কনটেস্টে অংশগ্রহণ করতে পারে
- কনটেস্ট তৈরি করতে পারে এবং বিজয়ীদের ঘোষণা করতে পারে। এখানে ব্যবহারকারীদের জন্য বিভিন্ন 
-রোল এবং ফিচার আছে যা তাদের অভিজ্ঞতাকে আরও উন্নত করে।  
+## Project Overview
+ContestHub is a contest management platform where users can participate in various contests, create new contests, and announce winners. The platform provides different roles and features for users to enhance their experience.
 
-## ⭐ ওয়েবসাইটের ফিচারসমূহ
-- ব্যবহারকারী নিবন্ধন এবং লগইন (Firebase Authentication)
-- আলাদা রোল: Admin, Contest Creator, Normal User
-- Admin কনটেস্ট অনুমোদন / বাতিল এবং ব্যবহারকারীর রোল পরিবর্তন করতে পারে
-- Contest Creator নতুন কনটেস্ট তৈরি এবং সম্পাদনা করতে পারে
-- ব্যবহারকারী কনটেস্টে অংশগ্রহণ এবং পেমেন্টের মাধ্যমে নিবন্ধিত হতে পারে
-- লাইভ কনটেস্টের জন্য ডেডলাইন কাউন্টডাউন
-- পেমেন্ট ইন্টিগ্রেশন (Stripe)
-- অংশগ্রহণকারীরা কনটেস্টের টাস্ক সাবমিট করতে পারে
-- বিজয়ীদের নাম এবং ফটো কনটেস্ট শেষ হওয়ার পর দেখানো হয়
-- রিয়েল-টাইম লিডারবোর্ড
-- ডিজাইন, কোডিং, লেখা ইত্যাদির জন্য সার্চ এবং ফিল্টার ফিচার
-- রেসপনসিভ ডিজাইন TailwindCSS ব্যবহার করে
-- আকর্ষণীয় অ্যানিমেশন এবং চার্ট দেখানোর জন্য AOS এবং Recharts ব্যবহার
+## Technologies Used
+- **Frontend:** React, TailwindCSS
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB Atlas
+- **Authentication:** Firebase Authentication
+- **Payment Integration:** Stripe
+- **Charts & Animations:** Recharts, AOS
 
+## Key Features
+✅ User Registration & Login (Firebase Authentication)
+✅ Roles: Admin, Contest Creator, Normal User
+✅ Admin Panel: Approve/reject contests, change user roles
+✅ Contest Creator: Create and edit contests
+✅ Participation: Users can join contests and register via payment
+✅ Deadline Countdown: Live contest countdown timer
+✅ Submission: Participants can submit contest tasks
+✅ Winners Display: Show winners' names and photos after contest ends
+✅ Real-Time Leaderboard
+✅ Search & Filter: By category like Design, Coding, Writing, etc.
+✅ Responsive Design: Mobile, Tablet, Desktop (TailwindCSS)
+✅ Animations & Charts: Using AOS and Recharts
 
+## Dependencies
+- **Frontend:** react, react-dom, react-router-dom, tailwindcss
+- **Backend:** express, mongoose, cors, dotenv
+- **Integrations:** firebase, stripe, react-toastify, axios
+- **UI/UX:** aos, recharts
+
+## Steps to Run Locally
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Azaharul-islam615/ph-assignment11-client.git
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   cd ph-assignment11-client && npm install
+   ```
+
+3. **Setup .env file** with Firebase, Stripe & MongoDB credentials.
+
+4. **Run the project:**
+   ```bash
+   npm run dev   # Frontend
+   ```
+
+5. **Open** http://localhost:5173 in your browser.
