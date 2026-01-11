@@ -103,45 +103,49 @@ const ContestDetails = () => {
     };
 
     return (
-        <div data-aos="fade-up" className=" text-white min-h-screen py-12">
+        <div data-aos="fade-up" className=" text-white min-h-screen py-24">
             <title>contestHub-contestDelails</title>
             <div data-aos="fade-up" className="max-w-5xl mx-auto px-4">
-                <h1 data-aos="fade-up" className="text-4xl font-extrabold mb-4">{contest?.name}</h1>
-                <img data-aos="fade-up" src={contest?.image} className="w-full h-72 object-cover rounded-xl shadow-lg" alt="Contest Banner" />
+                <h1  className="text-4xl font-extrabold mb-4">{contest?.name}</h1>
+                <img  src={contest?.image} className="w-full h-72 object-cover rounded-xl shadow-lg" alt="Contest Banner" />
 
                 {/* Stats */}
-                <div className="mt-6 bg-[#0C1A4A] p-6 rounded-xl grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div data-aos="fade-up" className="mt-6 bg-[#0C1A4A] p-6 rounded-xl grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                     <div >
-                        <p data-aos="fade-up" className="text-gray-300">Participants</p>
-                        <h2 data-aos="fade-up" className="text-3xl font-bold">{contest?.participants}</h2>
+                        <p  className="text-gray-300">Participants</p>
+                        <h2  className="text-3xl font-bold">{contest?.participants}</h2>
                     </div>
                     <div >
-                        <p data-aos="fade-up" className="text-gray-300">Prize Money</p>
-                        <h2 data-aos="fade-up" className="text-3xl font-bold text-indigo-400">{contest?.prize}</h2>
+                        <p  className="text-gray-300">Prize Money</p>
+                        <h2  className="text-3xl font-bold text-indigo-400">{contest?.prize}</h2>
                     </div>
                     <div>
-                        <p data-aos="fade-up" className="text-gray-300">Deadline</p>
+                        <p  className="text-gray-300">Deadline</p>
                         {timeLeft ? (
-                            <h2 data-aos="fade-up" className="text-xl font-bold text-red-400">
+                            <h2  className="text-xl font-bold text-red-400">
                                 {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
                             </h2>
                         ) : (
-                            <h2 data-aos="fade-up" className="text-2xl font-bold text-red-600">Contest Ended</h2>
+                            <h2  className="text-2xl font-bold text-red-600">Contest Ended</h2>
                         )}
                     </div>
                 </div>
 
                 {/* Buttons */}
                 <div data-aos="fade-up" className="mt-8 flex flex-col md:flex-row gap-4">
-                    <button data-aos="fade-up" onClick={() => handled(contest)}
-                        disabled={isContestEnded}
-                        className={`px-6 py-3 rounded-xl font-bold ${isContestEnded ? "bg-gray-500 cursor-not-allowed" : "bg-indigo-600 hover:bg-indigo-700"}`}
-                    >
-                        {isContestEnded ? "Contest Ended" : "Register / Pay"}
-                    </button>
+                    {
+                        user && <>
+                            <button  onClick={() => handled(contest)}
+                                disabled={isContestEnded}
+                                className={`px-6 py-3 rounded-xl font-bold ${isContestEnded ? "bg-gray-500 cursor-not-allowed" : "bg-indigo-600 hover:bg-indigo-700"}`}
+                            >
+                                {isContestEnded ? "Contest Ended" : "Register / Pay"}
+                            </button>
+                        </>
+                    }
 
                     {
-                        winner?.paymentStatus === 'paid' && <button data-aos="fade-up"
+                        winner?.paymentStatus === 'paid' && <button 
                             disabled={isContestEnded}
                             onClick={() => setOpenModal(true)}
                             className={`px-6 py-3 rounded-xl font-bold ${isContestEnded ? "bg-gray-500 cursor-not-allowed" : "bg-green-600 hover:bg-green-700"}`}
@@ -153,11 +157,11 @@ const ContestDetails = () => {
 
                 {/* Description */}
                 <div data-aos="fade-up" className="mt-10 bg-[#0C1A4A] p-6 rounded-xl">
-                    <h2 data-aos="fade-up" className="text-2xl font-bold mb-3">📝 Contest Description</h2>
-                    <p data-aos="fade-up" className="text-gray-300 leading-7">{contest?.description}</p>
+                    <h2  className="text-2xl font-bold mb-3">📝 Contest Description</h2>
+                    <p  className="text-gray-300 leading-7">{contest?.description}</p>
 
-                    <h2 data-aos="fade-up" className="text-2xl font-bold mt-6 mb-3">📌 Task Details</h2>
-                    <p data-aos="fade-up" className="text-gray-300 leading-7">{contest?.taskInstruction}</p>
+                    <h2  className="text-2xl font-bold mt-6 mb-3">📌 Task Details</h2>
+                    <p  className="text-gray-300 leading-7">{contest?.taskInstruction}</p>
                 </div>
             </div>
 

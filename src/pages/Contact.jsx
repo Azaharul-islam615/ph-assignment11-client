@@ -4,7 +4,7 @@ import { AuthContext } from "../Context/Authprovider";
 const Contact = () => {
     const {toggle}=use(AuthContext)
     return (
-        <section data-aos="fade-up" className={` ${toggle ? ' text-white' : 'bg-white text-black ' } py-16`}>
+        <section data-aos="fade-up" className={`  py-24`}>
             <div data-aos="fade-up" className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12">
                 <title>contestHub-contact</title>
                 {/* Left Side – Info */}

@@ -9,55 +9,62 @@ const PopularContests = () => {
         queryKey: ['contest', 'pending'],
         queryFn: async () => {
             const res = await axiosSecure.get(`/popular`)
+            console.log('API Response:', res.data); // Debug log
             return res.data
         }
     })
 
+    console.log('Contests data:', contests); // Debug log
 
     return (
-        <div className="w-11/12 mx-auto py-12 ">
+        <div className="w-11/12 mx-auto pt-12 ">
 
             {/* Section Title */}
             <div className="text-center mb-16">
                 <h2 className="text-4xl font-bold text-white">🔥 Popular Contests</h2>
-                <p className="text-gray-300 text-[18px] mt-2 ">
+                <p className="text-gray-300 text-[20px] mt-2 ">
                     Explore the most trending and highly participated contests happening <br /> right now.
                     Join the competition and showcase your <br /> creativity to become the next winner!
                 </p>
             </div>
 
             {/* Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div data-aos="fade-up" className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3 ">
                 {contests.map((contest) => (
-                    <div key={contest.id} className="card bg-base-100 shadow-xl">
-                        <figure>
-                            <img
-                                src={contest.image}
-                                alt={contest.name}
-                                className="h-48 w-full object-cover"
-                            />
-                        </figure>
 
-                        <div className="card-body">
-                            <h2 className="card-title text-lg font-bold">
-                                {contest.name}
-                            </h2>
+                    <div
+                        key={contest._id}
+                        className="bg-white flex flex-col  rounded-lg overflow-hidden shadow-lg flex flex-col justify-between hover:scale-[1.02] duration-300 border border-transparent hover:border-blue-500"
+                    >
+                        <img
+                            src={contest.image }
+                            alt={contest.name || contest.contestName || 'Contest'}
+                            className="w-full h-44 object-cover rounded-t-lg hover:scale-110 transition duration-300"
+                            
+                        />
 
-                            <p className="text-sm text-gray-600">
-                                {contest.description?.slice(0, 80)}...
+                        <div className="px-3 py-2 flex flex-col flex-grow">
+                            <h3 className="text-xl font-bold text-gray-800">{contest.name || contest.contestName || 'Contest Name'}</h3>
+                            <p className="text-md text-gray-800 mt-1">
+                                Prize: {contest.prize}
+                            </p>
+                            <p className="text-md text-gray-800 mt-1">
+                                Participants: {contest.participants || contest.participantCount || 0}
+                            </p>
+                            <p className="text-md text-gray-800 mt-1 mb-1">
+                                Description: {contest.description || contest.contestDescription || 'No description available'}
                             </p>
 
-                            <p className="font-medium text-blue-600 mt-2">
-                                Participants: {contest.participants}
-                            </p>
 
-                            <div className="card-actions justify-end mt-3">
-                                <Link to={`/contestdetails/${contest._id}`} className="btn bg-blue-600 text-white hover:bg-blue-700">
-                                    Details
-                                </Link>
-                            </div>
+                            <Link to={`/contestdetails/${contest._id}`} className="mt-auto">
+                                <button className="bg-blue-600 hover:bg-blue-700 w-full text-white py-2 rounded-lg transition font-semibold tracking-wide">
+                                    View Details
+                                </button>
+                            </Link>
                         </div>
                     </div>
+
+
                 ))}
             </div>
             <div className="text-center mt-8 ">

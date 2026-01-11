@@ -2,6 +2,7 @@ import React, { use, useEffect, useState } from 'react';
 import img1 from "../assets/ChatGPT Image ৯ ডিসে, ২০২৫, ০১_৩৯_৫২ PM.png";
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../Context/Authprovider';
+import { CgLogOut } from 'react-icons/cg';
 
 const Navbar = () => {
     const { user, logout } = use(AuthContext);
@@ -18,15 +19,12 @@ const Navbar = () => {
 
     const links = (
         <>
-            <NavLink to="/" className="text-[16px] mr-5">Home</NavLink>
-            <NavLink to="/allcontest" className="text-[16px] mr-5">All Contests</NavLink>
-            <NavLink to="/about" className="text-[16px] mr-5">About Us</NavLink>
-            <NavLink to="/contact" className="text-[16px] mr-5">Contact</NavLink>
-            {user && (
-                <NavLink to="/dashboard" className="text-[16px] mr-5">
-                    Dashboard
-                </NavLink>
-            )}
+            <NavLink to="/" className="text-[18px] mr-5">Home</NavLink>
+            <NavLink to="/allcontest" className="text-[18px] mr-5">All Contests</NavLink>
+            <NavLink to="/about" className="text-[18px] mr-5">About Us</NavLink>
+            <NavLink to="/contact" className="text-[18px] mr-5">Contact</NavLink>
+            <NavLink to="/terms" className="text-[18px] mr-5">Terms</NavLink>
+
         </>
     );
     useEffect(() => {
@@ -46,7 +44,7 @@ const Navbar = () => {
 
     return (
         <div className="bg-[#050E3C] fixed top-0 z-10 w-full ">
-            <div className="navbar text-white shadow-sm">
+            <div className="navbar w-11/12 mx-auto text-white shadow-sm">
                 {/* LEFT */}
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -87,30 +85,23 @@ const Navbar = () => {
                 {/* RIGHT */}
                 <div className="navbar-end flex items-center gap-2">
                     <input onClick={handleTheme} type="checkbox" defaultChecked className="md:mr-2 toggle toggle-warning" />
-                    {!user ? (
+                    {!user &&
                         <>
                             <Link
                                 to="/login"
-                                className="btn bg-[#050E3C] text-white hover:bg-[#2563EB] font-semibold text-[16px]"
+                                className="btn rounded-lg bg-[#050E3C] text-white hover:bg-[#2563EB] font-semibold text-[16px]"
                             >
                                 LogIn
                             </Link>
                             <Link
                                 to="/register"
-                                className="btn bg-[#050E3C] text-white hover:bg-[#2563EB] font-semibold text-[16px]"
+                                className="btn rounded-lg bg-[#050E3C] text-white hover:bg-[#2563EB] font-semibold text-[16px]"
                             >
                                 Register
                             </Link>
                         </>
-                    ) : (
-                        <button
-                            onClick={handleLogout}
-                            className="btn bg-[#050E3C] text-white hover:bg-[#2563EB] font-semibold text-[14px] md:text-[16px]"
-                        >
-                            Logout
-                        </button>
-                    )}
 
+                    }
                     {/* PROFILE DROPDOWN */}
                     {user && (
                         <div className="relative ml-1">
@@ -128,24 +119,42 @@ const Navbar = () => {
 
                             {/* Dropdown */}
                             {openProfile && (
-                                <div className="absolute right-0 mt-2 w-44 bg-[#050E3C] text-white rounded-lg shadow-lg z-50 p-3">
-                                    <p className="font-semibold border-b border-gray-600 pb-1">
+                                <div className="absolute border-[1.5px] border-blue-500 p-4 right-0 mt-2 w-80 bg-[#050E3C] text-white rounded-lg shadow-lg z-50 ">
+                                    <img className='rounded-full w-[70px] mx-auto mb-2' src={user.photoURL} alt="" />
+                                    <p className="font-semibold border-b text-center border-gray-600 pb-2 ">
                                         {user.displayName}
                                     </p>
+                                    <div className='flex justify-center mt-2'> <Link to="/dashboard/myProfile" className='btn bg-gradient-to-r from-[#050E3C] to-[#1E40FF]
+ rounded-lg mx-auto text-white'>Veiwe Profile</Link></div>
 
                                     <Link
                                         to="/dashboard"
-                                        className="block mt-2 hover:text-blue-400"
+                                        className="block text-[15px] mt-8 hover:text-blue-400 border-b border-gray-600"
                                         onClick={() => setOpenProfile(false)}
                                     >
                                         Dashboard
                                     </Link>
+                                    <Link
+                                        to="/asction"
+                                        className="block text-[15px] mt-2 hover:text-blue-400 border-b border-gray-600"
+                                        onClick={() => setOpenProfile(false)}
+                                    >
+                                        Actionable Dashboard
+                                    </Link>
+
+                                    <Link
+                                        to=""
+                                        className="block text-[15px] mt-2 hover:text-blue-400 border-b border-gray-600"
+                                        onClick={() => setOpenProfile(false)}
+                                    >
+                                        Settings
+                                    </Link>
 
                                     <button
                                         onClick={handleLogout}
-                                        className="mt-2 w-full text-left hover:text-red-400"
+                                        className="mt-2 flex text-red-500 items-center gap-1  text-[15px] w-full text-left hover:text-red-400"
                                     >
-                                        Logout
+                                        Logout <CgLogOut color='red' size={24} />
                                     </button>
                                 </div>
                             )}

@@ -113,7 +113,7 @@ const Register = () => {
     }
 
     return (
-        <div data-aos="fade-up" className="text-white flex justify-center items-center min-h-screen ">
+        <div data-aos="fade-up" className="text-white pt-20 flex justify-center items-center min-h-screen ">
             <title>contestHub-Register</title>
             <div className="w-full max-w-sm p-4 border-1 border-green-500 rounded-2xl mt-4 ">
                 <h1 className="text-4xl font-bold mb-1">Create Account</h1>

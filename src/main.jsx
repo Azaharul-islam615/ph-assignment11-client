@@ -8,6 +8,7 @@ import Home from './pages/Home.jsx'
 import Errorpage from './component/Errorpage.jsx'
 import AllContests from './pages/AllContest.jsx'
 import About from './pages/About.jsx'
+import TermsAndConditions from './pages/TermsAndConditions.jsx'
 
 import ContestDetails from './component/ContestDetails.jsx'
 import Login from './component/Login.jsx'
@@ -36,6 +37,7 @@ import CreatorRoute from './component/CreatorRoute.jsx'
 import Leaderboard from './pages/Dashboard/Leaderboard/Leaderboard.jsx'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Dashboard from './component/dashboard.jsx'
 
 
 AOS.init({
@@ -65,13 +67,17 @@ const router = createBrowserRouter([
         Component: About
       },
       {
+        path: '/terms',
+        Component: TermsAndConditions
+      },
+      {
         path: '/contact',
         element: <Privetroutes><Contact></Contact></Privetroutes>
 
       },
       {
         path: '/contestdetails/:id',
-        element: <Privetroutes><ContestDetails></ContestDetails></Privetroutes>
+        element: <ContestDetails></ContestDetails>
       },
       {
         path: '/login',
@@ -84,7 +90,8 @@ const router = createBrowserRouter([
       {
         path: '*',
         Component: Errorpage
-      }
+      },
+      {path:'/asction',element:<Privetroutes><Dashboard></Dashboard></Privetroutes>}
     ]
   },
   {

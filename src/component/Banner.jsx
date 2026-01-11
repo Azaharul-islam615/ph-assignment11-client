@@ -108,7 +108,7 @@ const Banner = () => {
                                 {slide.title}
                             </h1>
 
-                            <p className="mt-4 text-sm md:text-lg opacity-90">
+                            <p className="mt-4 text-sm md:text-[20px] opacity-90">
                                 {slide.subtitle}
                             </p>
 
